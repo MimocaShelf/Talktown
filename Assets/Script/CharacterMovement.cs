@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
     public float gravity = -9.81f;
-    public float jumpHeight = 1.5f;
     public Transform cameraTransform;
     public float mouseSensitivity = 2f;
 
@@ -28,15 +27,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
 
-        // --- Gravity ---
+        // --- Gravity only (no jump) ---
         if (controller.isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
-        }
-
-        if (Input.GetButtonDown("Jump") && controller.isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            velocity.y = -2f; // keep grounded
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -51,5 +45,10 @@ public class PlayerMovement : MonoBehaviour
 
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            return;
+        }
     }
 }
