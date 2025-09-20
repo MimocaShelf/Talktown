@@ -10,7 +10,14 @@ public class NPCInteract : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            DialogueManager.Instance.ShowDialogue(npcName + ": " + dialogueLine);
+            DialogueManager.Instance.ShowDialogue(npcName + ": Welcome to Talktown!");
+
+            DialogueChoiceManager.Instance.ShowChoices(
+                "Ask about the town", () => DialogueManager.Instance.ShowDialogue("This town is full of life!"),
+                "Ask about work", () => DialogueManager.Instance.ShowDialogue("There are many jobs in the market."),
+                "Ask about food", () => DialogueManager.Instance.ShowDialogue("Try the local café!"),
+                "Say goodbye", () => DialogueManager.Instance.ShowDialogue("Goodbye! Come back anytime.")
+            );
         }
     }
 
