@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c39845f786e40f392723489897cd07, type: 3}
   m_Name: Skin 0
   m_EditorClassIdentifier: 
-  <selfShadingSize>k__BackingField: 0.2
-  <highlightSmoothness>k__BackingField: 0.1
+  <selfShadingSize>k__BackingField: 4.27
+  <highlightSmoothness>k__BackingField: 0.841
   <highlightStrength>k__BackingField: 0.04
   <shadowStrength>k__BackingField: 0.2
   <colors>k__BackingField:
-  - {r: 1, g: 0.83004874, b: 0.7311321, a: 0}
+  - {r: 0.5754717, g: 0.3910345, b: 0.3013083, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0.764151, g: 0.55156654, b: 0.2198736, a: 0}
-  - {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 0}
-  - {r: 0.35644355, g: 0.77640206, b: 0.8490566, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0.8509804, g: 0.3974001, b: 0.35686275, a: 0}
   - {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0}
   - {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 0}
   - {r: 0.8867924, g: 0.46431112, b: 0.46431112, a: 0}
