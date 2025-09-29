@@ -15,7 +15,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked; // lock mouse to screen
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
     }
 
     void Update()
