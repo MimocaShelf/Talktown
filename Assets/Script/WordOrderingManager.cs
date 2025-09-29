@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class WordOrderingManager : MonoBehaviour
 {
+    public Slot[] slots;
+    public Transform answerPanel;
     public GameObject wordButtonPrefab;
     public GameObject slotPrefab;
     public Transform scrambledPanel;
-    public Transform answerPanel;
 
     private List<string> correctSentence = new List<string> { "I", "would", "Like", "to", "buy", "milk" };
 
@@ -49,24 +50,34 @@ public class WordOrderingManager : MonoBehaviour
 
     public void CheckAnswer()
     {
-        List<string> playerSentence = new List<string>();
+        string playerSentence = "";
 
-        foreach (Transform slot in answerPanel)
+        // Get all slots under the AnswerPanel
+        Slot[] slots = answerPanel.GetComponentsInChildren<Slot>();
+
+        foreach (Slot slot in slots)
         {
-            if (slot.childCount > 0)
-                playerSentence.Add(slot.GetComponentInChildren<TextMeshProUGUI>().text);
+            // Each slot has its own TMP text child
+            TextMeshProUGUI slotText = slot.GetComponentInChildren<TextMeshProUGUI>();
+
+            if (slotText != null && !string.IsNullOrWhiteSpace(slotText.text))
+            {
+                Debug.Log($"[CHECK] Slot {slot.name} contains: {slotText.text}");
+                playerSentence += slotText.text + " ";
+            }
+            else
+            {
+                Debug.Log($"[CHECK] Slot {slot.name} is empty.");
+            }
         }
 
-        string result = string.Join(" ", playerSentence);
-        string correct = string.Join(" ", correctSentence);
+        playerSentence = playerSentence.Trim();
+        string correctString = string.Join(" ", correctSentence);
 
-        if (result == correct)
-        {
-            Debug.Log("✅ Correct! +10 points");
-        }
+        if (playerSentence == correctString)
+            Debug.Log("✅ Correct: " + playerSentence);
         else
-        {
-            Debug.Log("❌ Wrong order. Try again!");
-        }
+            Debug.Log("❌ Wrong. You said: " + playerSentence + " | Correct is: " + correctString);
     }
+
 }

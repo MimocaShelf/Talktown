@@ -629,6 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecf6f5ce24510f4f8568fa0c07cdff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slots: []
   wordButtonPrefab: {fileID: 6388025099165353349, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
   slotPrefab: {fileID: 4347700106458488086, guid: e97e4c571edd86243873a806e86d238b, type: 3}
   scrambledPanel: {fileID: 1379588485}
@@ -1526,7 +1527,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 737, y: -378}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 190.1, y: 62.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &762524835
 MonoBehaviour:
@@ -1571,7 +1572,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 762524836}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 306504428}
+        m_TargetAssemblyTypeName: WordOrderingManager, Assembly-CSharp
+        m_MethodName: CheckAnswer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &762524836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3846,7 +3859,7 @@ RectTransform:
   m_GameObject: {fileID: 2091699972}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.39, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 762524834}
@@ -3903,8 +3916,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30.98
+  m_fontSizeBase: 30.98
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
