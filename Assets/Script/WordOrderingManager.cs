@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class WordOrderingManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class WordOrderingManager : MonoBehaviour
     public GameObject wordButtonPrefab;
     public GameObject slotPrefab;
     public Transform scrambledPanel;
+    public TextMeshProUGUI wrongText;
+    public TextMeshProUGUI correctText;
 
     private List<string> correctSentence = new List<string> { "I", "would", "Like", "to", "buy", "milk" };
 
@@ -51,23 +54,14 @@ public class WordOrderingManager : MonoBehaviour
     public void CheckAnswer()
     {
         string playerSentence = "";
-
-        // Get all slots under the AnswerPanel
         Slot[] slots = answerPanel.GetComponentsInChildren<Slot>();
 
         foreach (Slot slot in slots)
         {
-            // Each slot has its own TMP text child
             TextMeshProUGUI slotText = slot.GetComponentInChildren<TextMeshProUGUI>();
-
             if (slotText != null && !string.IsNullOrWhiteSpace(slotText.text))
             {
-                Debug.Log($"[CHECK] Slot {slot.name} contains: {slotText.text}");
                 playerSentence += slotText.text + " ";
-            }
-            else
-            {
-                Debug.Log($"[CHECK] Slot {slot.name} is empty.");
             }
         }
 
@@ -75,9 +69,21 @@ public class WordOrderingManager : MonoBehaviour
         string correctString = string.Join(" ", correctSentence);
 
         if (playerSentence == correctString)
+        {
             Debug.Log("✅ Correct: " + playerSentence);
+            StartCoroutine(ShowFeedback(correctText));
+        }
         else
-            Debug.Log("❌ Wrong. You said: " + playerSentence + " | Correct is: " + correctString);
+        {
+            Debug.Log("❌ Wrong: " + playerSentence + " | Correct is: " + correctString);
+            StartCoroutine(ShowFeedback(wrongText));
+        }
     }
 
+    private IEnumerator ShowFeedback(TextMeshProUGUI feedbackText)
+    {
+        feedbackText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);   // wait 3 seconds
+        feedbackText.gameObject.SetActive(false);
+    }
 }
