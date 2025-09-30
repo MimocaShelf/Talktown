@@ -6,19 +6,18 @@ using System.Collections;
 
 public class WordOrderingManager : MonoBehaviour
 {
-    public Slot[] slots;
     public Transform answerPanel;
     public GameObject wordButtonPrefab;
     public GameObject slotPrefab;
     public Transform scrambledPanel;
     public TextMeshProUGUI wrongText;
     public TextMeshProUGUI correctText;
+    public NPCInteract groceryNPC;
 
-    private List<string> correctSentence = new List<string> { "I", "would", "Like", "to", "buy", "milk" };
+    private List<string> correctSentence = new List<string> { "I", "would", "like", "to", "buy", "milk" };
 
     void Start()
     {
-        GenerateChallenge(correctSentence);
     }
 
     public void GenerateChallenge(List<string> sentence)
@@ -68,10 +67,10 @@ public class WordOrderingManager : MonoBehaviour
         playerSentence = playerSentence.Trim();
         string correctString = string.Join(" ", correctSentence);
 
-        if (playerSentence == correctString)
+        if (playerSentence.Equals(correctString, System.StringComparison.OrdinalIgnoreCase))
         {
             Debug.Log("✅ Correct: " + playerSentence);
-            StartCoroutine(ShowFeedback(correctText));
+            StartCoroutine(HandleCorrectAnswer());
         }
         else
         {
@@ -80,10 +79,22 @@ public class WordOrderingManager : MonoBehaviour
         }
     }
 
+    private IEnumerator HandleCorrectAnswer()
+    {
+        correctText.gameObject.SetActive(true);
+
+        // Immediately close the puzzle UI
+        groceryNPC.CloseSentenceGame();
+
+        // Wait 3 seconds before hiding the feedback
+        yield return new WaitForSeconds(3f);
+        correctText.gameObject.SetActive(false);
+    }
+
     private IEnumerator ShowFeedback(TextMeshProUGUI feedbackText)
     {
         feedbackText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(3f);   // wait 3 seconds
+        yield return new WaitForSeconds(3f);
         feedbackText.gameObject.SetActive(false);
     }
 }

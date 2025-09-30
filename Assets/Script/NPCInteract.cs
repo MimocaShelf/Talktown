@@ -5,6 +5,17 @@ public class NPCInteract : MonoBehaviour
     public string npcName = "NPC";
     [TextArea] public string dialogueLine = "Hello, welcome to Talktown!";
     private bool playerInRange = false;
+    public GameObject sentenceUI;             // The UI panel parent
+    public WordOrderingManager wordManager;     // Drag your WordOrderingManager here
+
+    void start()
+    {
+        LockMouse();
+
+        // Ensure sentence UI is hidden initially
+        if (sentenceUI != null)
+            sentenceUI.SetActive(false);
+    }
 
     void Update()
     {
@@ -12,14 +23,10 @@ public class NPCInteract : MonoBehaviour
         {
             if (CompareTag("GroceryNPC"))
             {
-                DialogueManager.Instance.ShowDialogue(npcName + ": What can I help you with today?");
+                OpenSentenceGame();
+                wordManager.GenerateChallenge(new System.Collections.Generic.List<string>
+                { "I", "would", "like", "to", "buy", "milk" });
 
-                DialogueChoiceManager.Instance.ShowChoices(
-                    "I want rice", () => DialogueManager.Instance.ShowDialogue("NPC: Sure, the rice is in aisle 2."),
-                    "I want chips", () => DialogueManager.Instance.ShowDialogue("NPC: Sure, Chips are in the aisle 9."),
-                    "I want water", () => DialogueManager.Instance.ShowDialogue("NPC: Sure, Water bottles are near the drinks section, aisle 8."),
-                    "I want milk", () => DialogueManager.Instance.ShowDialogue("NPC: Sure, Milk is in the refrigerated section, aisle 6.")
-                );
             }
             else
             {
@@ -49,8 +56,39 @@ public class NPCInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            DialogueManager.Instance.ClearDialogue();
-            DialogueChoiceManager.Instance.HideChoices();
+            if (sentenceUI != null)
+                sentenceUI.SetActive(false);
+            LockMouse();
         }
     }
+
+    public void OpenSentenceGame()
+    {
+        if (sentenceUI != null)
+            sentenceUI.SetActive(true);
+        UnlockMouse();
+    }
+
+    public void CloseSentenceGame()
+    {
+        if (sentenceUI != null)
+            sentenceUI.SetActive(false);
+        LockMouse();
+
+        // NPC follow-up
+        DialogueManager.Instance.ShowDialogue(npcName + ": Can I help with anything else?");
+    }
+
+    private void UnlockMouse()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void LockMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }
+
