@@ -2245,7 +2245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.57
+      value: 1.513
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2253,7 +2253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.317
+      value: -6.69
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2479,6 +2479,7 @@ MonoBehaviour:
   dialogueLine: Hello, welcome to Talktown!
   sentenceUI: {fileID: 1162884824}
   wordManager: {fileID: 306504428}
+  sentenceResponses: []
 --- !u!65 &940123112
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3454,10 +3455,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da5b2e5da265844eb751d0b8fd7f242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcName: NPC
+  npcName: GroceryNPC
   dialogueLine: Hello, welcome to Talktown!
   sentenceUI: {fileID: 1162884824}
   wordManager: {fileID: 306504428}
+  sentenceResponses:
+  - sentence: Do you sell apples
+    response: Yes, they are in the Fruit n Veg section.
+  - sentence: I would like to buy milk
+    response: The milk is in aisle 6.
+  - sentence: How much are your water bottles
+    response: Our water bottles are $2.99. They are located at the back in the fridge.
+  - sentence: Where can I find the bread
+    response: You can find the bread in aisle 5.
+  - sentence: Where are the chips
+    response: Chips should be in aisle 9.
+  - sentence: I could not find the eggs
+    response: Ah, they are in the middle fridge at the back!
+  - sentence: Where do you guys keep your cereal
+    response: They are in aisle 6.
 --- !u!65 &1418576975
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3474,7 +3490,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.33, y: 1, z: 1.39}

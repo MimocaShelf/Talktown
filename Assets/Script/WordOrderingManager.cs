@@ -13,8 +13,9 @@ public class WordOrderingManager : MonoBehaviour
     public TextMeshProUGUI wrongText;
     public TextMeshProUGUI correctText;
     public NPCInteract groceryNPC;
+    private List<string> activeSentence;
 
-    private List<string> correctSentence = new List<string> { "I", "would", "like", "to", "buy", "milk" };
+    //private List<string> correctSentence = new List<string> { "I", "would", "like", "to", "buy", "milk" };
 
     void Start()
     {
@@ -22,6 +23,8 @@ public class WordOrderingManager : MonoBehaviour
 
     public void GenerateChallenge(List<string> sentence)
     {
+
+        activeSentence = sentence;
         // Clear old UI
         foreach (Transform child in scrambledPanel) Destroy(child.gameObject);
         foreach (Transform child in answerPanel) Destroy(child.gameObject);
@@ -50,6 +53,17 @@ public class WordOrderingManager : MonoBehaviour
         }
     }
 
+    private IEnumerator ShowFeedback(TMPro.TextMeshProUGUI feedbackText)
+    {
+        if (feedbackText == null)
+            yield break;
+
+        feedbackText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        feedbackText.gameObject.SetActive(false);
+    }
+
+
     public void CheckAnswer()
     {
         string playerSentence = "";
@@ -65,12 +79,12 @@ public class WordOrderingManager : MonoBehaviour
         }
 
         playerSentence = playerSentence.Trim();
-        string correctString = string.Join(" ", correctSentence);
+        string correctString = string.Join(" ", activeSentence);
 
         if (playerSentence.Equals(correctString, System.StringComparison.OrdinalIgnoreCase))
         {
             Debug.Log("✅ Correct: " + playerSentence);
-            StartCoroutine(HandleCorrectAnswer());
+            StartCoroutine(HandleCorrectAnswer(playerSentence)); // now passes sentence
         }
         else
         {
@@ -79,22 +93,24 @@ public class WordOrderingManager : MonoBehaviour
         }
     }
 
-    private IEnumerator HandleCorrectAnswer()
+    private IEnumerator HandleCorrectAnswer(string playerSentence)
     {
         correctText.gameObject.SetActive(true);
 
-        // Immediately close the puzzle UI
+        // Get NPC response for this sentence
+        string npcResponse = groceryNPC.GetResponseForSentence(playerSentence);
+
+        // Tell NPC to close UI
         groceryNPC.CloseSentenceGame();
 
-        // Wait 3 seconds before hiding the feedback
+        // Show dialogue
+        DialogueManager.Instance.ShowDialogue(groceryNPC.npcName + ": " + npcResponse);
+
+        // Advance to next sentence
+        groceryNPC.NextSentence();
+
         yield return new WaitForSeconds(3f);
         correctText.gameObject.SetActive(false);
     }
 
-    private IEnumerator ShowFeedback(TextMeshProUGUI feedbackText)
-    {
-        feedbackText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(3f);
-        feedbackText.gameObject.SetActive(false);
-    }
 }

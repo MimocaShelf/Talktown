@@ -1,4 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
+
+[System.Serializable]
+public class SentenceResponse
+{
+    [TextArea] public string sentence;
+    [TextArea] public string response;
+}
 
 public class NPCInteract : MonoBehaviour
 {
@@ -7,6 +15,24 @@ public class NPCInteract : MonoBehaviour
     private bool playerInRange = false;
     public GameObject sentenceUI;             // The UI panel parent
     public WordOrderingManager wordManager;     // Drag your WordOrderingManager here
+
+    [Header("UI + Game References")]
+    [Header("Sentence/Response Mapping")]
+    public List<SentenceResponse> sentenceResponses;
+    private int currentSentenceIndex = 0;
+
+
+    public string GetResponseForSentence(string playerSentence)
+    {
+        foreach (var sr in sentenceResponses)
+        {
+            if (playerSentence.Equals(sr.sentence, System.StringComparison.OrdinalIgnoreCase))
+            {
+                return sr.response;
+            }
+        }
+        return "Sorry, I don’t understand that request.";
+    }
 
     void start()
     {
@@ -24,8 +50,8 @@ public class NPCInteract : MonoBehaviour
             if (CompareTag("GroceryNPC"))
             {
                 OpenSentenceGame();
-                wordManager.GenerateChallenge(new System.Collections.Generic.List<string>
-                { "I", "would", "like", "to", "buy", "milk" });
+                //wordManager.GenerateChallenge(new System.Collections.Generic.List<string>
+                //{ "I", "would", "like", "to", "buy", "milk" });
 
             }
             else
@@ -66,8 +92,17 @@ public class NPCInteract : MonoBehaviour
     {
         if (sentenceUI != null)
             sentenceUI.SetActive(true);
+
         UnlockMouse();
+
+        if (wordManager != null && sentenceResponses.Count > 0)
+        {
+            // Use the current sentence from the list
+            string sentence = sentenceResponses[currentSentenceIndex].sentence;
+            wordManager.GenerateChallenge(new List<string>(sentence.Split(' ')));
+        }
     }
+
 
     public void CloseSentenceGame()
     {
@@ -76,8 +111,21 @@ public class NPCInteract : MonoBehaviour
         LockMouse();
 
         // NPC follow-up
-        DialogueManager.Instance.ShowDialogue(npcName + ": Can I help with anything else?");
+        DialogueManager.Instance.ShowDialogue(npcName + ": The milk is in aisle 6.");
     }
+
+    public void NextSentence()
+    {
+        currentSentenceIndex++;
+
+        // Loop back or stop if out of sentences
+        if (currentSentenceIndex >= sentenceResponses.Count)
+        {
+            currentSentenceIndex = 0; // or remove this line if you want it to stop instead
+            Debug.Log("No more sentences for this NPC.");
+        }
+    }
+
 
     private void UnlockMouse()
     {
