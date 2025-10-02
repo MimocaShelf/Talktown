@@ -17,9 +17,7 @@ public class Slot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            RectTransform word = eventData.pointerDrag.GetComponent<RectTransform>();
-
-            // Get the text from the dragged word
+            DraggableWord draggable = eventData.pointerDrag.GetComponent<DraggableWord>();
             TextMeshProUGUI wordText = eventData.pointerDrag.GetComponentInChildren<TextMeshProUGUI>();
 
             if (wordText != null && slotText != null)

@@ -3459,8 +3459,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7021,8 +7021,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7557,6 +7557,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1144132663549231613, guid: 74a1e9f41f95de040ad32464edc4454f, type: 3}
+      propertyPath: m_Height
+      value: 1.8728787
+      objectReference: {fileID: 0}
+    - target: {fileID: -1144132663549231613, guid: 74a1e9f41f95de040ad32464edc4454f, type: 3}
+      propertyPath: m_Radius
+      value: 0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: -1144132663549231613, guid: 74a1e9f41f95de040ad32464edc4454f, type: 3}
+      propertyPath: m_Center.y
+      value: 0.43643922
+      objectReference: {fileID: 0}
     - target: {fileID: 1386078374388468368, guid: 74a1e9f41f95de040ad32464edc4454f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -7747,6 +7759,18 @@ PrefabInstance:
     - target: {fileID: 1653133988655110996, guid: 1100699d665634ee698997437839cb9b, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568625032236541925, guid: 1100699d665634ee698997437839cb9b, type: 3}
+      propertyPath: m_Height
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568625032236541925, guid: 1100699d665634ee698997437839cb9b, type: 3}
+      propertyPath: m_Radius
+      value: 0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568625032236541925, guid: 1100699d665634ee698997437839cb9b, type: 3}
+      propertyPath: m_Center.y
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 5472177437870883159, guid: 1100699d665634ee698997437839cb9b, type: 3}
       propertyPath: m_Name
@@ -8007,8 +8031,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10220,8 +10244,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -16625,8 +16649,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -33,7 +33,7 @@ public class NPCInteract : MonoBehaviour
                 return sr.response;
             }
         }
-        return "Sorry, I don’t understand that request.";
+        return "Sorry, I donï¿½t understand that request.";
     }
 
     void Start()
@@ -66,7 +66,7 @@ public class NPCInteract : MonoBehaviour
                 DialogueChoiceManager.Instance.ShowChoices(
                     "Ask about the town", () => DialogueManager.Instance.ShowDialogue("This town is full of life!"),
                     "Ask about groceries", () => DialogueManager.Instance.ShowDialogue("There is a grocery store behind me. Check it out!"),
-                    "Ask about food", () => DialogueManager.Instance.ShowDialogue("Try the local café!"),
+                    "Ask about food", () => DialogueManager.Instance.ShowDialogue("Try the local cafï¿½!"),
                     "Say goodbye", () => DialogueManager.Instance.ShowDialogue("Goodbye! Come back anytime.")
                 );
             }
@@ -89,6 +89,7 @@ public class NPCInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            DialogueManager.Instance.ClearDialogue();
             if (sentenceUI != null)
                 sentenceUI.SetActive(false);
             LockMouse();
@@ -121,7 +122,7 @@ public class NPCInteract : MonoBehaviour
         if (currentSentenceIndex >= sentenceResponses.Count)
         {
             Debug.Log("No more sentences available for this NPC.");
-            currentSentenceIndex = 0; // loop back, or remove this line if you don’t want looping
+            currentSentenceIndex = 0; // loop back, or remove this line if you donï¿½t want looping
         }
     }
     private void UnlockMouse()
