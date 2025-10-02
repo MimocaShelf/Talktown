@@ -89,6 +89,7 @@ public class NPCInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            DialogueManager.Instance.ClearDialogue();
             if (sentenceUI != null)
                 sentenceUI.SetActive(false);
             LockMouse();

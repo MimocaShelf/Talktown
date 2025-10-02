@@ -2193,8 +2193,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4900,8 +4900,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5162,13 +5162,27 @@ PrefabInstance:
       value: 391.4
       objectReference: {fileID: 0}
     - target: {fileID: 2699092741681021261, guid: 011e621a2a8dfef4ea1fb3e5a5a7e86c, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699092741681021261, guid: 011e621a2a8dfef4ea1fb3e5a5a7e86c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699092741681021261, guid: 011e621a2a8dfef4ea1fb3e5a5a7e86c, type: 3}
       propertyPath: m_ProvidesContacts
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 011e621a2a8dfef4ea1fb3e5a5a7e86c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1343133883}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 011e621a2a8dfef4ea1fb3e5a5a7e86c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1343133882}
   m_SourcePrefab: {fileID: 100100000, guid: 011e621a2a8dfef4ea1fb3e5a5a7e86c, type: 3}
 --- !u!4 &868652437 stripped
 Transform:
@@ -5519,6 +5533,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5637484228516810899, guid: 74a1e9f41f95de040ad32464edc4454f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1418576975}
+    - targetCorrespondingSourceObject: {fileID: 5637484228516810899, guid: 74a1e9f41f95de040ad32464edc4454f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1418576979}
     - targetCorrespondingSourceObject: {fileID: 2758264289196049282, guid: 74a1e9f41f95de040ad32464edc4454f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1286532865}
@@ -5593,6 +5610,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5472177437870883159, guid: 1100699d665634ee698997437839cb9b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 940123112}
+    - targetCorrespondingSourceObject: {fileID: 5472177437870883159, guid: 1100699d665634ee698997437839cb9b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 940123116}
   m_SourcePrefab: {fileID: 100100000, guid: 1100699d665634ee698997437839cb9b, type: 3}
 --- !u!1 &940123107 stripped
 GameObject:
@@ -5637,6 +5657,29 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.022123, y: 1, z: 2.0974932}
   m_Center: {x: -0.2010616, y: 0, z: -0.28374648}
+--- !u!136 &940123116
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940123107}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.66
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.55, z: 0}
 --- !u!1001 &943810570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5872,8 +5915,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7092,8 +7135,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7582,6 +7625,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332954256}
   m_Mesh: {fileID: -2432090755550338912, guid: 9f06f3e5b0658294d9e44505f90dac9f, type: 3}
+--- !u!1 &1343133877 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 011e621a2a8dfef4ea1fb3e5a5a7e86c, type: 3}
+  m_PrefabInstance: {fileID: 868652436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1343133882
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343133877}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 260.33, y: 343.44757, z: 42.1}
+  m_Center: {x: -173.8, y: 168.81555, z: 194.5}
+--- !u!65 &1343133883
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343133877}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 260.33, y: 343.44757, z: 42.1}
+  m_Center: {x: 165.4, y: 168.81555, z: 194.5}
 --- !u!1001 &1361453023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8171,6 +8261,29 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.33, y: 1, z: 1.39}
   m_Center: {x: 0, y: 0.53, z: 0}
+--- !u!136 &1418576979
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418576970}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.6
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.58, z: 0}
 --- !u!1001 &1436059408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12633,8 +12746,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
