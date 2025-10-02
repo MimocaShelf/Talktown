@@ -23,39 +23,26 @@ public class Slot : MonoBehaviour, IDropHandler
             DraggableWord draggable = eventData.pointerDrag.GetComponent<DraggableWord>();
             TextMeshProUGUI wordText = eventData.pointerDrag.GetComponentInChildren<TextMeshProUGUI>();
 
-            DraggableWord draggable = eventData.pointerDrag.GetComponent<DraggableWord>();
-            if (draggable != null)
+            if (draggable != null && wordText != null)
             {
-                // Update the slot’s text
-                slotText.text = draggable.GetWord();
+                // If a different word was here before, reset its color
+                if (currentWord != null && currentWord != eventData.pointerDrag)
+                {
+                    Image oldImage = currentWord.GetComponent<Image>();
+                    if (oldImage != null) oldImage.color = Color.white;
+                }
 
-                // Change slot background colour to blue
-                if (background != null)
-                    background.color = Color.blue;
+                // Assign new word
+                slotText.text = wordText.text;
+                currentWord = eventData.pointerDrag;
 
-                Debug.Log($"Slot filled with: {slotText.text}");
+                // Make visuals blue
+                Image wordImage = currentWord.GetComponent<Image>();
+                if (wordImage != null) wordImage.color = Color.blue;
+                if (background != null) background.color = Color.blue;
+
+                Debug.Log($"[SLOT] {gameObject.name} now contains word: {slotText.text}");
             }
-
-
-            if (wordText != null && slotText != null)
-            {
-                slotText.text = wordText.text;  // ✅ Display the word on the slot
-            }
-            Image wordImage = eventData.pointerDrag.GetComponent<Image>();
-            if (wordImage != null)
-            {
-                wordImage.color = Color.blue;
-            }
-            Image slotImage = GetComponent<Image>();
-            if (slotImage != null)
-            {
-                slotImage.color = Color.blue;
-            }
-
-            // Track which word is here
-            currentWord = eventData.pointerDrag;
-
-            Debug.Log($"[SLOT] {gameObject.name} now contains word: {slotText.text}");
         }
     }
 }
