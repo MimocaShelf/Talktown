@@ -93,6 +93,16 @@ public class WordOrderingManager : MonoBehaviour
         // Show NPC dialogue
         DialogueManager.Instance.ShowDialogue(groceryNPC.npcName + ": " + npcResponse);
 
+
+        // Wait for 2 seconds before prompting item collection
+        yield return new WaitForSeconds(2f);
+
+        //string requiredItem = groceryNPC.sentenceResponses[groceryNPC.currentSentenceIndex].requiredItemName;
+
+        //Prompt player to find item
+       // DialogueManager.Instance.ShowDialogue("Now go find a " + requiredItem + " and press E to pick it up!");
+
+
         // Advance to the next sentence in NPC
         groceryNPC.NextSentence();
 
