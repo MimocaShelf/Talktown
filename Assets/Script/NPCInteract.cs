@@ -81,6 +81,9 @@ public class NPCInteract : MonoBehaviour
         {
             playerInRange = true;
             DialogueManager.Instance.ShowDialogue("Press E to talk to " + npcName);
+        }else
+        {
+            playerInRange = false;
         }
     }
 
