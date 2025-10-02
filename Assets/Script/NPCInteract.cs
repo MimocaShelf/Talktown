@@ -51,6 +51,7 @@ public class NPCInteract : MonoBehaviour
             if (CompareTag("GroceryNPC"))
             {
                 OpenSentenceGame();
+                DialogueManager.Instance.ShowDialogue(npcName + ": Yes! How can I help?");
 
                 if (wordManager != null && sentenceResponses.Count > 0)
                 {
