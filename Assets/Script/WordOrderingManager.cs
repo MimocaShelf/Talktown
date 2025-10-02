@@ -1,25 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
 public class WordOrderingManager : MonoBehaviour
 {
-    public Slot[] slots;
     public Transform answerPanel;
     public GameObject wordButtonPrefab;
     public GameObject slotPrefab;
     public Transform scrambledPanel;
+    public TextMeshProUGUI wrongText;
+    public TextMeshProUGUI correctText;
+    public NPCInteract groceryNPC;   // reference to the NPC
 
-    private List<string> correctSentence = new List<string> { "I", "would", "Like", "to", "buy", "milk" };
+    private List<string> activeSentence;  // holds the current correct sentence
 
-    void Start()
-    {
-        GenerateChallenge(correctSentence);
-    }
-
+    // Generate a new scrambled challenge
     public void GenerateChallenge(List<string> sentence)
     {
+        activeSentence = sentence; // store current correct sentence
+
         // Clear old UI
         foreach (Transform child in scrambledPanel) Destroy(child.gameObject);
         foreach (Transform child in answerPanel) Destroy(child.gameObject);
@@ -48,36 +49,62 @@ public class WordOrderingManager : MonoBehaviour
         }
     }
 
+    // Called when the Check button is pressed
     public void CheckAnswer()
     {
         string playerSentence = "";
-
-        // Get all slots under the AnswerPanel
         Slot[] slots = answerPanel.GetComponentsInChildren<Slot>();
 
         foreach (Slot slot in slots)
         {
-            // Each slot has its own TMP text child
             TextMeshProUGUI slotText = slot.GetComponentInChildren<TextMeshProUGUI>();
-
             if (slotText != null && !string.IsNullOrWhiteSpace(slotText.text))
             {
-                Debug.Log($"[CHECK] Slot {slot.name} contains: {slotText.text}");
                 playerSentence += slotText.text + " ";
-            }
-            else
-            {
-                Debug.Log($"[CHECK] Slot {slot.name} is empty.");
             }
         }
 
         playerSentence = playerSentence.Trim();
-        string correctString = string.Join(" ", correctSentence);
+        string correctString = string.Join(" ", activeSentence);
 
-        if (playerSentence == correctString)
+        if (playerSentence.Equals(correctString, System.StringComparison.OrdinalIgnoreCase))
+        {
             Debug.Log("✅ Correct: " + playerSentence);
+            StartCoroutine(HandleCorrectAnswer(playerSentence));
+        }
         else
-            Debug.Log("❌ Wrong. You said: " + playerSentence + " | Correct is: " + correctString);
+        {
+            Debug.Log("❌ Wrong: " + playerSentence + " | Correct is: " + correctString);
+            StartCoroutine(ShowFeedback(wrongText));
+        }
     }
 
+    // Handles correct answers
+    private IEnumerator HandleCorrectAnswer(string playerSentence)
+    {
+        correctText.gameObject.SetActive(true);
+
+        // Ask NPC for the correct response
+        string npcResponse = groceryNPC.GetResponseForSentence(playerSentence);
+
+        // Immediately close the puzzle UI
+        groceryNPC.CloseSentenceGame();
+
+        // Show NPC dialogue
+        DialogueManager.Instance.ShowDialogue(groceryNPC.npcName + ": " + npcResponse);
+
+        // Advance to the next sentence in NPC
+        groceryNPC.NextSentence();
+
+        yield return new WaitForSeconds(3f);
+        correctText.gameObject.SetActive(false);
+    }
+
+    // Handles wrong feedback
+    private IEnumerator ShowFeedback(TextMeshProUGUI feedbackText)
+    {
+        feedbackText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        feedbackText.gameObject.SetActive(false);
+    }
 }
