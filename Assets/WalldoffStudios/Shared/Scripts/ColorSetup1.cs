@@ -1,4 +1,4 @@
-    using System;
+using System;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -7,8 +7,10 @@ using UnityEditor;
 namespace WalldoffStudios.ToonCharacter
 {
 
-
-    [ExecuteInEditMode, CanEditMultipleObjects]
+#if UNITY_EDITOR
+    [CanEditMultipleObjects]
+#endif
+    [ExecuteInEditMode]
     public class ColorSetup1 : MonoBehaviour
     {
         [SerializeField] private ToonColors toonColors = null;
