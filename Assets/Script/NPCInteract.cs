@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 [System.Serializable]
@@ -8,16 +8,17 @@ public class SentenceResponse
     [TextArea] public string response;
 }
 
-public class NPCInteract : MonoBehaviour
-{
+    public class NPCInteract : MonoBehaviour
+{ 
 
-
+    [Header("Item Request")]
+    public ItemType requestedItem = ItemType.None;
     [Header("UI + Game References")]
     public GameObject sentenceUI;                 // The UI panel parent
-    public WordOrderingManager wordManager;       // Drag your WordOrderingManager here
+    public WordOrderingManager wordManager;      
 
     [Header("Sentence/Response Mapping")]
-    public List<SentenceResponse> sentenceResponses;   // Fill in Inspector
+    public List<SentenceResponse> sentenceResponses;  
     private int currentSentenceIndex = 0;
     public string npcName = "NPC";
     [TextArea] public string dialogueLine = "Hello, welcome to Talktown!";
@@ -33,7 +34,7 @@ public class NPCInteract : MonoBehaviour
                 return sr.response;
             }
         }
-        return "Sorry, I don�t understand that request.";
+        return "Sorry, I don’t understand that request.";
     }
 
     void Start()
@@ -59,7 +60,8 @@ public class NPCInteract : MonoBehaviour
                     string sentence = sentenceResponses[currentSentenceIndex].sentence;
                     wordManager.GenerateChallenge(new List<string>(sentence.Split(' ')));
                 }
-            }
+            TryResolveItemTurnIn();
+        }
             else
             {
                 DialogueManager.Instance.ShowDialogue(npcName + ": Welcome to Talktown!");
@@ -67,7 +69,7 @@ public class NPCInteract : MonoBehaviour
                 DialogueChoiceManager.Instance.ShowChoices(
                     "Ask about the town", () => DialogueManager.Instance.ShowDialogue("This town is full of life!"),
                     "Ask about groceries", () => DialogueManager.Instance.ShowDialogue("There is a grocery store behind me. Check it out!"),
-                    "Ask about food", () => DialogueManager.Instance.ShowDialogue("Try the local caf�!"),
+                    "Ask about food", () => DialogueManager.Instance.ShowDialogue("Try the local café!"),
                     "Say goodbye", () => DialogueManager.Instance.ShowDialogue("Goodbye! Come back anytime.")
                 );
             }
@@ -123,7 +125,7 @@ public class NPCInteract : MonoBehaviour
         if (currentSentenceIndex >= sentenceResponses.Count)
         {
             Debug.Log("No more sentences available for this NPC.");
-            currentSentenceIndex = 0; // loop back, or remove this line if you don�t want looping
+            currentSentenceIndex = 0; // loop back, or remove this line if you don’t want looping
         }
     }
     private void UnlockMouse()
@@ -137,5 +139,46 @@ public class NPCInteract : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
+
+    public void SetRequestedItem(ItemType type)
+    {
+        requestedItem = type;
+
+        DialogueManager.Instance.ShowDialogue($"{npcName}: Please bring me {type}.");
     }
+
+     private void TryResolveItemTurnIn()
+     {
+         var player = FindObjectOfType<PlayerInventory>();
+            if (requestedItem == ItemType.None)
+            {
+                // No request yet → trigger the word game
+                DialogueManager.Instance.ShowDialogue($"{npcName}: Tell me what you need first.");
+                OpenSentenceGame();
+                return;
+            }
+
+            if (!player.HasItem)
+            {
+                DialogueManager.Instance.ShowDialogue($"{npcName}: You’re not holding anything. Please bring {requestedItem}.");
+                return;
+            }
+
+            if (player.HeldItem == requestedItem)
+            {
+
+                player.TryConsume(requestedItem);
+                DialogueManager.Instance.ShowDialogue($"{npcName}: Perfect, that’s exactly the {requestedItem} I needed! Thank you.");
+                requestedItem = ItemType.None; 
+            }
+            else
+            {
+                DialogueManager.Instance.ShowDialogue($"{npcName}: That’s not {requestedItem}. Let’s try again.");
+                OpenSentenceGame(); 
+            }
+     }
+}
+
+
 

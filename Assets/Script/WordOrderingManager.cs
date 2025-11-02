@@ -117,4 +117,16 @@ public class WordOrderingManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         feedbackText.gameObject.SetActive(false);
     }
+
+    private ItemType MapSentenceToItem(string sentence)
+    {
+        string s = sentence.ToLowerInvariant();
+        if (s.Contains("apple")) return ItemType.Apples;
+        if (s.Contains("bread")) return ItemType.Bread;
+        if (s.Contains("cereal")) return ItemType.Cereal;
+        if (s.Contains("milk")) return ItemType.Milk;
+        if (s.Contains("water")) return ItemType.Water;
+        if (s.Contains("chicken")) return ItemType.Chicken;
+        return ItemType.None;
+    }
 }
