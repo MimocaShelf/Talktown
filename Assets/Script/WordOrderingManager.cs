@@ -129,4 +129,19 @@ public class WordOrderingManager : MonoBehaviour
         if (s.Contains("chicken")) return ItemType.Chicken;
         return ItemType.None;
     }
+
+    public void HandleCorrectSentence(string playerSentence)
+    {
+        Debug.Log($"Correct sentence completed: {playerSentence}");
+
+        // Example matching logic:
+        if (playerSentence.Contains("apple"))
+            groceryNPC.requestedItem = ItemType.Apples;
+        else if (playerSentence.Contains("milk"))
+            groceryNPC.requestedItem = ItemType.Milk;
+        else if (playerSentence.Contains("bread"))
+            groceryNPC.requestedItem = ItemType.Bread;
+
+        groceryNPC.CloseSentenceGame();
+    }
 }

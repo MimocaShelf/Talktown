@@ -150,14 +150,7 @@ public class SentenceResponse
 
      private void TryResolveItemTurnIn()
      {
-         var player = FindObjectOfType<PlayerInventory>();
-            if (requestedItem == ItemType.None)
-            {
-                // No request yet → trigger the word game
-                DialogueManager.Instance.ShowDialogue($"{npcName}: Tell me what you need first.");
-                OpenSentenceGame();
-                return;
-            }
+         var player = FindAnyObjectByType<PlayerInventory>();
 
             if (!player.HasItem)
             {
@@ -169,7 +162,7 @@ public class SentenceResponse
             {
 
                 player.TryConsume(requestedItem);
-                DialogueManager.Instance.ShowDialogue($"{npcName}: Perfect, that’s exactly the {requestedItem} I needed! Thank you.");
+                DialogueManager.Instance.ShowDialogue($"{npcName}: Perfect, that’s exactly the {requestedItem}.");
                 requestedItem = ItemType.None; 
             }
             else
@@ -178,6 +171,12 @@ public class SentenceResponse
                 OpenSentenceGame(); 
             }
      }
+
+    private void UnlockNextSentenceChallenge()
+    {
+        NextSentence(); 
+        OpenSentenceGame(); 
+    }
 }
 
 
