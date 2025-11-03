@@ -15,7 +15,8 @@ public class SentenceResponse
     public ItemType requestedItem = ItemType.None;
     [Header("UI + Game References")]
     public GameObject sentenceUI;                 // The UI panel parent
-    public WordOrderingManager wordManager;      
+    public WordOrderingManager wordManager;
+    public PlayerInventory playerInventory;
 
     [Header("Sentence/Response Mapping")]
     public List<SentenceResponse> sentenceResponses;  
@@ -23,6 +24,9 @@ public class SentenceResponse
     public string npcName = "NPC";
     [TextArea] public string dialogueLine = "Hello, welcome to Talktown!";
     private bool playerInRange = false;
+
+    private int questStage = 0;
+    private bool waitingForItem = false;
 
 
     public string GetResponseForSentence(string playerSentence)
@@ -41,27 +45,33 @@ public class SentenceResponse
     {
         LockMouse();
 
-        // Ensure sentence UI is hidden initially
+        //Ensure sentence UI is hidden initially
         if (sentenceUI != null)
             sentenceUI.SetActive(false);
     }
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (!playerInRange) return;
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
+            if (waitingForItem)
+            {
+                TryResolveItemTurnIn();
+                return;
+            }
+
             if (CompareTag("GroceryNPC"))
             {
                 OpenSentenceGame();
-                DialogueManager.Instance.ShowDialogue(npcName + ": Yes! How can I help?");
+                DialogueManager.Instance.ShowDialogue($"{npcName}: Yes! How can I help?");
 
                 if (wordManager != null && sentenceResponses.Count > 0)
                 {
-                    // Get current sentence from mapping and generate challenge
                     string sentence = sentenceResponses[currentSentenceIndex].sentence;
                     wordManager.GenerateChallenge(new List<string>(sentence.Split(' ')));
                 }
-            TryResolveItemTurnIn();
-        }
+            }
             else
             {
                 DialogueManager.Instance.ShowDialogue(npcName + ": Welcome to Talktown!");
@@ -84,6 +94,7 @@ public class SentenceResponse
         {
             playerInRange = true;
             DialogueManager.Instance.ShowDialogue("Press E to talk to " + npcName);
+            playerInventory = other.GetComponent<PlayerInventory>();
         }
     }
 
@@ -125,7 +136,6 @@ public class SentenceResponse
         if (currentSentenceIndex >= sentenceResponses.Count)
         {
             Debug.Log("No more sentences available for this NPC.");
-            currentSentenceIndex = 0; // loop back, or remove this line if you don’t want looping
         }
     }
     private void UnlockMouse()
@@ -141,42 +151,93 @@ public class SentenceResponse
         }
 
 
-    public void SetRequestedItem(ItemType type)
-    {
-        requestedItem = type;
+    //public void SetRequestedItem(ItemType type)
+    //{
+    //    requestedItem = type;
 
-        DialogueManager.Instance.ShowDialogue($"{npcName}: Please bring me {type}.");
+    //    DialogueManager.Instance.ShowDialogue($"{npcName}: Please bring me {type}.");
+    //}
+
+    public void OnSentenceComplete(string playerSentence)
+    {
+
+        switch (questStage)
+        {
+            case 0:
+                requestedItem = ItemType.Apples;
+                break;
+
+            case 1:
+                requestedItem = ItemType.Bread;
+                break;
+
+            case 2:
+                requestedItem = ItemType.Milk;
+                break;
+
+            default:
+                DialogueManager.Instance.ShowDialogue($"{npcName}: You're doing well!");
+                return;
+        }
+
+        if (questStage < sentenceResponses.Count)
+        {
+            string npcResponse = sentenceResponses[questStage].response;
+            DialogueManager.Instance.ShowDialogue($"{npcName}: {npcResponse}");
+        }
+        waitingForItem = true;
+        CloseSentenceGame();
     }
 
-     private void TryResolveItemTurnIn()
-     {
-         var player = FindAnyObjectByType<PlayerInventory>();
+    private void TryResolveItemTurnIn()
+    {
+        if (playerInventory == null)
+        {
+            DialogueManager.Instance.ShowDialogue($"{npcName}: You didn't bring anything.");
+            return;
+        }
+        if (!playerInventory.HasItem)
+        {
+            DialogueManager.Instance.ShowDialogue($"{npcName}: That’s not the item you wanted. It was {requestedItem}.");
+            return;
+        }
 
-            if (!player.HasItem)
-            {
-                DialogueManager.Instance.ShowDialogue($"{npcName}: You’re not holding anything. Please bring {requestedItem}.");
-                return;
-            }
+        if (playerInventory.HeldItem == requestedItem)
+        {
+            // Correct item delivered
+            DialogueManager.Instance.ShowDialogue($"{npcName}: Perfect! That’s the {requestedItem} I needed!");
+            playerInventory.TryConsume(requestedItem);
+            //playerInventory.AddScore(10);
 
-            if (player.HeldItem == requestedItem)
-            {
+            waitingForItem = false; // ✅ unlock next sentence
+            requestedItem = ItemType.None;
+            questStage++;
 
-                player.TryConsume(requestedItem);
-                DialogueManager.Instance.ShowDialogue($"{npcName}: Perfect, that’s exactly the {requestedItem}.");
-                requestedItem = ItemType.None; 
-            }
-            else
-            {
-                DialogueManager.Instance.ShowDialogue($"{npcName}: That’s not {requestedItem}. Let’s try again.");
-                OpenSentenceGame(); 
-            }
-     }
+            // wait 1.5s then open next sentence
+            Invoke(nameof(UnlockNextSentenceChallenge), 1.5f);
+        }
+        else
+        {
+            DialogueManager.Instance.ShowDialogue($"{npcName}: That’s not what I asked for. Try again!");
+        }
+    }
 
     private void UnlockNextSentenceChallenge()
     {
-        NextSentence(); 
-        OpenSentenceGame(); 
+        if (questStage < sentenceResponses.Count)
+        {
+            currentSentenceIndex = questStage;
+            string nextSentence = sentenceResponses[currentSentenceIndex].sentence;
+            DialogueManager.Instance.ShowDialogue($"{npcName}: Let’s move to the next one!");
+            wordManager.GenerateChallenge(new List<string>(nextSentence.Split(' ')));
+            OpenSentenceGame();
+        }
+        else
+        {
+            DialogueManager.Instance.ShowDialogue($"{npcName}: Thank you, come again!");
+        }
     }
+
 }
 
 
