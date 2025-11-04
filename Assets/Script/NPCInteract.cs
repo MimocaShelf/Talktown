@@ -122,9 +122,6 @@ public class SentenceResponse
         if (sentenceUI != null)
             sentenceUI.SetActive(false);
         LockMouse();
-
-        // Default follow-up if nothing matched
-        DialogueManager.Instance.ShowDialogue(npcName + ": Can I help with anything else?");
     }
 
 
@@ -175,6 +172,15 @@ public class SentenceResponse
                 requestedItem = ItemType.Chips;
                 break;
 
+            case 3:
+                requestedItem = ItemType.Water;
+                break;
+            
+            case 4:
+                requestedItem = ItemType.Bread;
+                break;
+
+
             default:
                 DialogueManager.Instance.ShowDialogue($"{npcName}: You're doing well!");
                 return;
@@ -193,7 +199,7 @@ public class SentenceResponse
     {
         if (playerInventory == null)
         {
-            DialogueManager.Instance.ShowDialogue($"{npcName}: You don't have the {requestedItem} yet.");
+            DialogueManager.Instance.ShowDialogue($"{npcName}:  Did you not find the {requestedItem}?");
             return;
         }
 
@@ -216,7 +222,7 @@ public class SentenceResponse
         }
         else
         {
-            DialogueManager.Instance.ShowDialogue($"{npcName}: Did you not find the {requestedItem}?.");
+            DialogueManager.Instance.ShowDialogue($"{npcName}: That is not what you wanted. You asked for {requestedItem}.");
         }
     }
 
