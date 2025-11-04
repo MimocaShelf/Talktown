@@ -193,13 +193,13 @@ public class SentenceResponse
     {
         if (playerInventory == null)
         {
-            DialogueManager.Instance.ShowDialogue($"{npcName}: Did you not find the {requestedItem}?");
+            DialogueManager.Instance.ShowDialogue($"{npcName}: You don't have the {requestedItem} yet.");
             return;
         }
 
         if (!playerInventory.HasItem)
         {
-            DialogueManager.Instance.ShowDialogue($"{npcName}: That's not the item you wanted. It was {requestedItem}.");
+            DialogueManager.Instance.ShowDialogue($"{npcName}: You don't have the {requestedItem} yet.");
             return;
         }
 
