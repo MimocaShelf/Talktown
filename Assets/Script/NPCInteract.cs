@@ -168,11 +168,11 @@ public class SentenceResponse
                 break;
 
             case 1:
-                requestedItem = ItemType.Bread;
+                requestedItem = ItemType.Milk;
                 break;
 
             case 2:
-                requestedItem = ItemType.Milk;
+                requestedItem = ItemType.Chips;
                 break;
 
             default:
@@ -193,34 +193,33 @@ public class SentenceResponse
     {
         if (playerInventory == null)
         {
-            DialogueManager.Instance.ShowDialogue($"{npcName}: You didn't bring anything.");
+            DialogueManager.Instance.ShowDialogue($"{npcName}: That's not the item you wanted. It was {requestedItem}.");
             return;
         }
+
         if (!playerInventory.HasItem)
         {
-            DialogueManager.Instance.ShowDialogue($"{npcName}: That’s not the item you wanted. It was {requestedItem}.");
+            DialogueManager.Instance.ShowDialogue($"{npcName}: That's not the item you wanted. It was {requestedItem}.");
             return;
         }
 
         if (playerInventory.HeldItem == requestedItem)
         {
-            // Correct item delivered
-            DialogueManager.Instance.ShowDialogue($"{npcName}: Perfect! That’s the {requestedItem} I needed!");
+            DialogueManager.Instance.ShowDialogue($"{npcName}: Perfect! That’s the {requestedItem}!");
             playerInventory.TryConsume(requestedItem);
-            //playerInventory.AddScore(10);
 
-            waitingForItem = false; // ✅ unlock next sentence
+            waitingForItem = false;         
             requestedItem = ItemType.None;
             questStage++;
 
-            // wait 1.5s then open next sentence
             Invoke(nameof(UnlockNextSentenceChallenge), 1.5f);
         }
         else
         {
-            DialogueManager.Instance.ShowDialogue($"{npcName}: That’s not what I asked for. Try again!");
+            DialogueManager.Instance.ShowDialogue($"{npcName}: That’s not what I asked for. I still need {requestedItem}.");
         }
     }
+
 
     private void UnlockNextSentenceChallenge()
     {

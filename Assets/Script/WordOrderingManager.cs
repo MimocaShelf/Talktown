@@ -16,16 +16,16 @@ public class WordOrderingManager : MonoBehaviour
 
     private List<string> activeSentence;  // holds the current correct sentence
 
-    // Generate a new scrambled challenge
+    //Generate a new scrambled challenge
     public void GenerateChallenge(List<string> sentence)
     {
         activeSentence = sentence; // store current correct sentence
 
-        // Clear old UI
+        //clear old UI
         foreach (Transform child in scrambledPanel) Destroy(child.gameObject);
         foreach (Transform child in answerPanel) Destroy(child.gameObject);
 
-        // Shuffle words
+        //Shuffle words
         List<string> scrambled = new List<string>(sentence);
         for (int i = 0; i < scrambled.Count; i++)
         {
@@ -35,21 +35,18 @@ public class WordOrderingManager : MonoBehaviour
             scrambled[rand] = temp;
         }
 
-        // Create scrambled word buttons
         foreach (string word in scrambled)
         {
             GameObject button = Instantiate(wordButtonPrefab, scrambledPanel);
             button.GetComponentInChildren<TextMeshProUGUI>().text = word;
         }
 
-        // Create answer slots
         for (int i = 0; i < sentence.Count; i++)
         {
             Instantiate(slotPrefab, answerPanel);
         }
     }
 
-    // Called when the Check button is pressed
     public void CheckAnswer()
     {
         string playerSentence = "";
@@ -69,12 +66,10 @@ public class WordOrderingManager : MonoBehaviour
 
         if (playerSentence.Equals(correctString, System.StringComparison.OrdinalIgnoreCase))
         {
-            Debug.Log("✅ Correct: " + playerSentence);
             StartCoroutine(HandleCorrectAnswer(playerSentence));
         }
         else
         {
-            Debug.Log("❌ Wrong: " + playerSentence + " | Correct is: " + correctString);
             StartCoroutine(ShowFeedback(wrongText));
         }
     }
@@ -84,29 +79,13 @@ public class WordOrderingManager : MonoBehaviour
     {
         correctText.gameObject.SetActive(true);
 
-        // Ask NPC for the correct response
         string npcResponse = groceryNPC.GetResponseForSentence(playerSentence);
-
-        // Immediately close the puzzle UI
+        groceryNPC.CloseSentenceGame();
+        DialogueManager.Instance.ShowDialogue(groceryNPC.npcName + ": " + npcResponse);
+        groceryNPC.OnSentenceComplete(playerSentence);
         groceryNPC.CloseSentenceGame();
 
-        // Show NPC dialogue
-        DialogueManager.Instance.ShowDialogue(groceryNPC.npcName + ": " + npcResponse);
-
-
-        // Wait for 2 seconds before prompting item collection
         yield return new WaitForSeconds(2f);
-
-        //string requiredItem = groceryNPC.sentenceResponses[groceryNPC.currentSentenceIndex].requiredItemName;
-
-        //Prompt player to find item
-       // DialogueManager.Instance.ShowDialogue("Now go find a " + requiredItem + " and press E to pick it up!");
-
-
-        // Advance to the next sentence in NPC
-        groceryNPC.NextSentence();
-
-        yield return new WaitForSeconds(3f);
         correctText.gameObject.SetActive(false);
     }
 
@@ -122,9 +101,8 @@ public class WordOrderingManager : MonoBehaviour
     {
         string s = sentence.ToLowerInvariant();
         if (s.Contains("apple")) return ItemType.Apples;
-        if (s.Contains("bread")) return ItemType.Bread;
-        if (s.Contains("cereal")) return ItemType.Cereal;
-        if (s.Contains("milk")) return ItemType.Milk;
+        if (s.Contains("bread")) return ItemType.Milk;
+        if (s.Contains("cereal")) return ItemType.Chips;
         if (s.Contains("water")) return ItemType.Water;
         if (s.Contains("chicken")) return ItemType.Chicken;
         return ItemType.None;
@@ -140,7 +118,7 @@ public class WordOrderingManager : MonoBehaviour
         else if (playerSentence.Contains("milk"))
             groceryNPC.requestedItem = ItemType.Milk;
         else if (playerSentence.Contains("bread"))
-            groceryNPC.requestedItem = ItemType.Bread;
+            groceryNPC.requestedItem = ItemType.Chips;
 
         groceryNPC.CloseSentenceGame();
     }

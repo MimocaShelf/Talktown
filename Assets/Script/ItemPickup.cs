@@ -4,9 +4,8 @@ public enum ItemType
 {
     None,
     Apples,
-    Bread,
-    Cereal,
     Milk,
+    Chips,
     Water,
     Chicken
 }
@@ -45,12 +44,10 @@ public class ItemPickup : MonoBehaviour
         {
             if (_playerInv.TryPickup(itemType))
             {
-                Debug.Log($"✅ Player picked up: {displayName}");
                 InteractionPrompt.Instance?.Hide();
             }
             else
             {
-                Debug.Log($"❌ Can't pick up {displayName}, already holding {_playerInv.HeldItem}");
                 InteractionPrompt.Instance?.Show($"Hands full (holding {_playerInv.HeldItem}).");
             }
         }

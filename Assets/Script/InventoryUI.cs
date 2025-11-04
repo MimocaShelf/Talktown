@@ -49,14 +49,11 @@ public class InventoryUI : MonoBehaviour
             case ItemType.Apples:
                 heldItemIcon.sprite = appleSprite;
                 break;
-            case ItemType.Bread:
+            case ItemType.Milk:
                 heldItemIcon.sprite = breadSprite;
                 break;
-            case ItemType.Cereal:
+            case ItemType.Chips:
                 heldItemIcon.sprite = cerealSprite;
-                break;
-            case ItemType.Milk:
-                heldItemIcon.sprite = milkSprite;
                 break;
             case ItemType.Water:
                 heldItemIcon.sprite = waterSprite;

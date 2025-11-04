@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
+
+
     public ItemType HeldItem { get; private set; } = ItemType.None;
 
     public bool HasItem => HeldItem != ItemType.None;
