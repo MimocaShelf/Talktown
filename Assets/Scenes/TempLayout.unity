@@ -119,6 +119,156 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &15117012
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1386078374388468368, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637484228516810899, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_Name
+      value: PharmacyNPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933517955021284800, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933517955021284800, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5041492
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933517955021284800, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.7535152
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933517955021284800, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933517955021284800, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933517955021284800, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933517955021284800, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933517955021284800, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933517955021284800, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933517955021284800, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5637484228516810899, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 15117015}
+    - targetCorrespondingSourceObject: {fileID: 5637484228516810899, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 15117014}
+    - targetCorrespondingSourceObject: {fileID: 5637484228516810899, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 15117019}
+  m_SourcePrefab: {fileID: 100100000, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+--- !u!1 &15117013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5637484228516810899, guid: f1249a0c32053ff4b90cb0da12842c81, type: 3}
+  m_PrefabInstance: {fileID: 15117012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &15117014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15117013}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3, y: 1.27, z: 1}
+  m_Center: {x: 0, y: 0.63, z: 0.46}
+--- !u!136 &15117015
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15117013}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.68
+  m_Height: 1.95
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.58, z: 0.03}
+--- !u!114 &15117019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15117013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a99c4dec830a249bc62cb89968d26c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requestedItem: 0
+  itemsEveryThird: 
+  sentenceUI: {fileID: 1829330834}
+  wordManager: {fileID: 306504428}
+  playerInventory: {fileID: 1961269737}
+  sentenceResponses:
+  - sentence: My eyes feel dry
+    response: Do they hurt or just feel uncomfortable?
+  - sentence: They feel itchy but not painful
+    response: 'It sounds like eye strain. '
+  - sentence: What do you suggest I get?
+    response: You should try the eye drops.
+  - sentence: My lower back feels stiff this morning.
+    response: Has this stiffness been happening often?
+  - sentence: It started after I lifted a heavy box.
+    response: Sounds like it might be muscular strain.
+  - sentence: Should I take any pain medicine?
+    response: I can suggest a mild anti-inflammatory.
+  npcName: Pharmacist
 --- !u!1001 &36646924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1444,7 +1594,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: c4abaab9431a8df4fa04d00760ccab0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 994987212}
   m_SourcePrefab: {fileID: 100100000, guid: c4abaab9431a8df4fa04d00760ccab0f, type: 3}
 --- !u!4 &206668911 stripped
 Transform:
@@ -2250,6 +2403,7 @@ MonoBehaviour:
   wrongText: {fileID: 1613931363}
   correctText: {fileID: 2133191317}
   groceryNPC: {fileID: 1418576974}
+  pharmacyNPC: {fileID: 15117019}
 --- !u!4 &306504429
 Transform:
   m_ObjectHideFlags: 0
@@ -2458,7 +2612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Talk to someone
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3799,7 +3953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requestedItem: 0
   sentenceUI: {fileID: 1272168954}
-  wordManager: {fileID: 1443277115}
+  wordManager: {fileID: 0}
   playerInventory: {fileID: 0}
   sentenceResponses:
   - sentence: Do you sell apples
@@ -6391,6 +6545,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroceryStore
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 011e621a2a8dfef4ea1fb3e5a5a7e86c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 011e621a2a8dfef4ea1fb3e5a5a7e86c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.18727346
@@ -6494,7 +6652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.84
+      value: -3.382
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6502,7 +6660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.308
+      value: -4.369
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7630,6 +7788,32 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3e3f0a7c8b39cc4b84e96f0777b04d2, type: 3}
+--- !u!1 &994987207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: c4abaab9431a8df4fa04d00760ccab0f, type: 3}
+  m_PrefabInstance: {fileID: 206668910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &994987212
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994987207}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.5, y: 21.88028, z: 18.6}
+  m_Center: {x: 4.61, y: 11.068998, z: -43.9382}
 --- !u!1 &1017174409
 GameObject:
   m_ObjectHideFlags: 0
@@ -9353,7 +9537,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1443277115}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WordOrderingManager, Assembly-CSharp
         m_MethodName: CheckAnswer
         m_Mode: 1
@@ -9964,57 +10148,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 90
   m_CollisionDetection: 0
---- !u!1 &1443277114
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1443277116}
-  - component: {fileID: 1443277115}
-  m_Layer: 0
-  m_Name: WordOrderingManager (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1443277115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443277114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ecf6f5ce24510f4f8568fa0c07cdff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  answerPanel: {fileID: 416954043}
-  wordButtonPrefab: {fileID: 6388025099165353349, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
-  slotPrefab: {fileID: 4347700106458488086, guid: e97e4c571edd86243873a806e86d238b, type: 3}
-  scrambledPanel: {fileID: 1382103783}
-  wrongText: {fileID: 940466168}
-  correctText: {fileID: 1856883390}
-  groceryNPC: {fileID: 537026652}
---- !u!4 &1443277116
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443277114}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 414.37552, y: 666.08527, z: 9.888932}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1570640283}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1452402958 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4594347215931136995, guid: b3e3f0a7c8b39cc4b84e96f0777b04d2, type: 3}
@@ -10860,7 +10993,6 @@ Transform:
   - {fileID: 491734012}
   - {fileID: 159110790}
   - {fileID: 235304296}
-  - {fileID: 1443277116}
   - {fileID: 555674979}
   - {fileID: 537026645}
   m_Father: {fileID: 0}
@@ -13928,7 +14060,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.6, y: 21.88028, z: 16.8}
+  m_Size: {x: 10.6, y: 21.88028, z: 20.73}
   m_Center: {x: 3.440021, y: 11.068998, z: -43.938198}
 --- !u!1 &1997808024
 GameObject:
@@ -15842,3 +15974,4 @@ SceneRoots:
   - {fileID: 912464011}
   - {fileID: 306504429}
   - {fileID: 1570640283}
+  - {fileID: 15117012}
