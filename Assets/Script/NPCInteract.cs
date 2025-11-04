@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 [System.Serializable]
@@ -8,20 +8,25 @@ public class SentenceResponse
     [TextArea] public string response;
 }
 
-public class NPCInteract : MonoBehaviour
-{
+    public class NPCInteract : MonoBehaviour
+{ 
 
-
+    [Header("Item Request")]
+    public ItemType requestedItem = ItemType.None;
     [Header("UI + Game References")]
     public GameObject sentenceUI;                 // The UI panel parent
-    public WordOrderingManager wordManager;       // Drag your WordOrderingManager here
+    public WordOrderingManager wordManager;
+    public PlayerInventory playerInventory;
 
     [Header("Sentence/Response Mapping")]
-    public List<SentenceResponse> sentenceResponses;   // Fill in Inspector
+    public List<SentenceResponse> sentenceResponses;  
     private int currentSentenceIndex = 0;
     public string npcName = "NPC";
     [TextArea] public string dialogueLine = "Hello, welcome to Talktown!";
     private bool playerInRange = false;
+
+    private int questStage = 0;
+    private bool waitingForItem = false;
 
 
     public string GetResponseForSentence(string playerSentence)
@@ -33,28 +38,36 @@ public class NPCInteract : MonoBehaviour
                 return sr.response;
             }
         }
-        return "Sorry, I don�t understand that request.";
+        return "Sorry, I don’t understand that request.";
     }
 
     void Start()
     {
         LockMouse();
 
-        // Ensure sentence UI is hidden initially
+        //Ensure sentence UI is hidden initially
         if (sentenceUI != null)
             sentenceUI.SetActive(false);
     }
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (!playerInRange) return;
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
+            if (waitingForItem)
+            {
+                TryResolveItemTurnIn();
+                return;
+            }
+
             if (CompareTag("GroceryNPC"))
             {
                 OpenSentenceGame();
+                DialogueManager.Instance.ShowDialogue($"{npcName}: Yes! How can I help?");
 
                 if (wordManager != null && sentenceResponses.Count > 0)
                 {
-                    // Get current sentence from mapping and generate challenge
                     string sentence = sentenceResponses[currentSentenceIndex].sentence;
                     wordManager.GenerateChallenge(new List<string>(sentence.Split(' ')));
                 }
@@ -66,7 +79,7 @@ public class NPCInteract : MonoBehaviour
                 DialogueChoiceManager.Instance.ShowChoices(
                     "Ask about the town", () => DialogueManager.Instance.ShowDialogue("This town is full of life!"),
                     "Ask about groceries", () => DialogueManager.Instance.ShowDialogue("There is a grocery store behind me. Check it out!"),
-                    "Ask about food", () => DialogueManager.Instance.ShowDialogue("Try the local caf�!"),
+                    "Ask about food", () => DialogueManager.Instance.ShowDialogue("Try the local café!"),
                     "Say goodbye", () => DialogueManager.Instance.ShowDialogue("Goodbye! Come back anytime.")
                 );
             }
@@ -81,9 +94,7 @@ public class NPCInteract : MonoBehaviour
         {
             playerInRange = true;
             DialogueManager.Instance.ShowDialogue("Press E to talk to " + npcName);
-        }else
-        {
-            playerInRange = false;
+            playerInventory = other.GetComponent<PlayerInventory>();
         }
     }
 
@@ -111,9 +122,6 @@ public class NPCInteract : MonoBehaviour
         if (sentenceUI != null)
             sentenceUI.SetActive(false);
         LockMouse();
-
-        // Default follow-up if nothing matched
-        DialogueManager.Instance.ShowDialogue(npcName + ": Can I help with anything else?");
     }
 
 
@@ -125,7 +133,6 @@ public class NPCInteract : MonoBehaviour
         if (currentSentenceIndex >= sentenceResponses.Count)
         {
             Debug.Log("No more sentences available for this NPC.");
-            currentSentenceIndex = 0; // loop back, or remove this line if you don�t want looping
         }
     }
     private void UnlockMouse()
@@ -139,5 +146,104 @@ public class NPCInteract : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
+
+    //public void SetRequestedItem(ItemType type)
+    //{
+    //    requestedItem = type;
+
+    //    DialogueManager.Instance.ShowDialogue($"{npcName}: Please bring me {type}.");
+    //}
+
+    public void OnSentenceComplete(string playerSentence)
+    {
+
+        switch (questStage)
+        {
+            case 0:
+                requestedItem = ItemType.Apples;
+                break;
+
+            case 1:
+                requestedItem = ItemType.Milk;
+                break;
+
+            case 2:
+                requestedItem = ItemType.Chips;
+                break;
+
+            case 3:
+                requestedItem = ItemType.Water;
+                break;
+            
+            case 4:
+                requestedItem = ItemType.Bread;
+                break;
+
+
+            default:
+                DialogueManager.Instance.ShowDialogue($"{npcName}: You're doing well!");
+                return;
+        }
+
+        if (questStage < sentenceResponses.Count)
+        {
+            string npcResponse = sentenceResponses[questStage].response;
+            DialogueManager.Instance.ShowDialogue($"{npcName}: {npcResponse}");
+        }
+        waitingForItem = true;
+        CloseSentenceGame();
     }
+
+    private void TryResolveItemTurnIn()
+    {
+        if (playerInventory == null)
+        {
+            DialogueManager.Instance.ShowDialogue($"{npcName}:  Did you not find the {requestedItem}?");
+            return;
+        }
+
+        if (!playerInventory.HasItem)
+        {
+            DialogueManager.Instance.ShowDialogue($"{npcName}: You don't have the {requestedItem} yet.");
+            return;
+        }
+
+        if (playerInventory.HeldItem == requestedItem)
+        {
+            DialogueManager.Instance.ShowDialogue($"{npcName}: Perfect! That’s the {requestedItem}!");
+            playerInventory.TryConsume(requestedItem);
+
+            waitingForItem = false;         
+            requestedItem = ItemType.None;
+            questStage++;
+
+            Invoke(nameof(UnlockNextSentenceChallenge), 1.5f);
+        }
+        else
+        {
+            DialogueManager.Instance.ShowDialogue($"{npcName}: That is not what you wanted. You asked for {requestedItem}.");
+        }
+    }
+
+
+    private void UnlockNextSentenceChallenge()
+    {
+        if (questStage < sentenceResponses.Count)
+        {
+            currentSentenceIndex = questStage;
+            string nextSentence = sentenceResponses[currentSentenceIndex].sentence;
+            DialogueManager.Instance.ShowDialogue($"{npcName}: Let’s move to the next one!");
+            wordManager.GenerateChallenge(new List<string>(nextSentence.Split(' ')));
+            OpenSentenceGame();
+        }
+        else
+        {
+            DialogueManager.Instance.ShowDialogue($"{npcName}: Thank you, come again!");
+        }
+    }
+
+}
+
+
 

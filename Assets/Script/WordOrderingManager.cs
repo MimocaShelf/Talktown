@@ -16,16 +16,16 @@ public class WordOrderingManager : MonoBehaviour
 
     private List<string> activeSentence;  // holds the current correct sentence
 
-    // Generate a new scrambled challenge
+    //Generate a new scrambled challenge
     public void GenerateChallenge(List<string> sentence)
     {
         activeSentence = sentence; // store current correct sentence
 
-        // Clear old UI
+        //clear old UI
         foreach (Transform child in scrambledPanel) Destroy(child.gameObject);
         foreach (Transform child in answerPanel) Destroy(child.gameObject);
 
-        // Shuffle words
+        //Shuffle words
         List<string> scrambled = new List<string>(sentence);
         for (int i = 0; i < scrambled.Count; i++)
         {
@@ -35,21 +35,18 @@ public class WordOrderingManager : MonoBehaviour
             scrambled[rand] = temp;
         }
 
-        // Create scrambled word buttons
         foreach (string word in scrambled)
         {
             GameObject button = Instantiate(wordButtonPrefab, scrambledPanel);
             button.GetComponentInChildren<TextMeshProUGUI>().text = word;
         }
 
-        // Create answer slots
         for (int i = 0; i < sentence.Count; i++)
         {
             Instantiate(slotPrefab, answerPanel);
         }
     }
 
-    // Called when the Check button is pressed
     public void CheckAnswer()
     {
         string playerSentence = "";
@@ -69,12 +66,10 @@ public class WordOrderingManager : MonoBehaviour
 
         if (playerSentence.Equals(correctString, System.StringComparison.OrdinalIgnoreCase))
         {
-            Debug.Log("✅ Correct: " + playerSentence);
             StartCoroutine(HandleCorrectAnswer(playerSentence));
         }
         else
         {
-            Debug.Log("❌ Wrong: " + playerSentence + " | Correct is: " + correctString);
             StartCoroutine(ShowFeedback(wrongText));
         }
     }
@@ -84,19 +79,13 @@ public class WordOrderingManager : MonoBehaviour
     {
         correctText.gameObject.SetActive(true);
 
-        // Ask NPC for the correct response
         string npcResponse = groceryNPC.GetResponseForSentence(playerSentence);
-
-        // Immediately close the puzzle UI
+        groceryNPC.CloseSentenceGame();
+        DialogueManager.Instance.ShowDialogue(groceryNPC.npcName + ": " + npcResponse);
+        groceryNPC.OnSentenceComplete(playerSentence);
         groceryNPC.CloseSentenceGame();
 
-        // Show NPC dialogue
-        DialogueManager.Instance.ShowDialogue(groceryNPC.npcName + ": " + npcResponse);
-
-        // Advance to the next sentence in NPC
-        groceryNPC.NextSentence();
-
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         correctText.gameObject.SetActive(false);
     }
 
@@ -106,5 +95,31 @@ public class WordOrderingManager : MonoBehaviour
         feedbackText.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         feedbackText.gameObject.SetActive(false);
+    }
+
+    private ItemType MapSentenceToItem(string sentence)
+    {
+        string s = sentence.ToLowerInvariant();
+        if (s.Contains("apple")) return ItemType.Apples;
+        if (s.Contains("milk")) return ItemType.Milk;
+        if (s.Contains("chips")) return ItemType.Chips;
+        if (s.Contains("water")) return ItemType.Water;
+        if (s.Contains("bread")) return ItemType.Bread;
+        return ItemType.None;
+    }
+
+    public void HandleCorrectSentence(string playerSentence)
+    {
+        Debug.Log($"Correct sentence completed: {playerSentence}");
+
+        // Example matching logic:
+        if (playerSentence.Contains("apple"))
+            groceryNPC.requestedItem = ItemType.Apples;
+        else if (playerSentence.Contains("milk"))
+            groceryNPC.requestedItem = ItemType.Milk;
+        else if (playerSentence.Contains("bread"))
+            groceryNPC.requestedItem = ItemType.Chips;
+
+        groceryNPC.CloseSentenceGame();
     }
 }

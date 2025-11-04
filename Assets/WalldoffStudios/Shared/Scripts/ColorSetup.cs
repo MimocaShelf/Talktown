@@ -11,8 +11,11 @@ namespace WalldoffStudios.ToonCharacter
         OnClick = 0,
         Always = 1,
     }
-    
-    [ExecuteInEditMode, CanEditMultipleObjects]
+
+#if UNITY_EDITOR
+    [CanEditMultipleObjects]
+#endif
+    [ExecuteInEditMode]
     public class ColorSetup : MonoBehaviour
     {
         [SerializeField] private ToonColors toonColors = null;
