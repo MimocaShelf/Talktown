@@ -101,10 +101,10 @@ public class WordOrderingManager : MonoBehaviour
     {
         string s = sentence.ToLowerInvariant();
         if (s.Contains("apple")) return ItemType.Apples;
-        if (s.Contains("bread")) return ItemType.Milk;
-        if (s.Contains("cereal")) return ItemType.Chips;
+        if (s.Contains("milk")) return ItemType.Milk;
+        if (s.Contains("chips")) return ItemType.Chips;
         if (s.Contains("water")) return ItemType.Water;
-        if (s.Contains("chicken")) return ItemType.Chicken;
+        if (s.Contains("bread")) return ItemType.Bread;
         return ItemType.None;
     }
 

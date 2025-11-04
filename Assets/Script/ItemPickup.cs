@@ -7,7 +7,7 @@ public enum ItemType
     Milk,
     Chips,
     Water,
-    Chicken
+    Bread
 }
 
 public class ItemPickup : MonoBehaviour
@@ -17,39 +17,72 @@ public class ItemPickup : MonoBehaviour
 
     private bool _playerInRange;
     private PlayerInventory _playerInv;
+    private bool _justPickedUp;
+    private float _pickupCooldown = 1.0f;
 
-    public string itemName;
-
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
+
         _playerInRange = true;
         _playerInv = other.GetComponent<PlayerInventory>();
-        InteractionPrompt.Instance?.Show($"Press E to pick up {displayName}");
+
+        if (_playerInv != null)
+        {
+            if (_playerInv.HasItem)
+                DialogueManager.Instance.ShowDialogue("You’re already holding an item! Press Q to drop it first.");
+            else
+                DialogueManager.Instance.ShowDialogue($"Press E to pick up {displayName}.");
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
+
         _playerInRange = false;
         _playerInv = null;
-        InteractionPrompt.Instance?.Hide();
+        _justPickedUp = false;
+
+        DialogueManager.Instance.ClearDialogue();
     }
 
     private void Update()
     {
         if (!_playerInRange || _playerInv == null) return;
 
+        if (_justPickedUp)
+        {
+            _pickupCooldown -= Time.deltaTime;
+            if (_pickupCooldown <= 0f)
+            {
+                _justPickedUp = false;
+                _pickupCooldown = 1.0f;
+            }
+            return;
+        }
+
+        if (_playerInv.HasItem)
+        {
+            DialogueManager.Instance.ShowDialogue("You’re already holding an item! Press Q to drop it first.");
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (_playerInv.TryPickup(itemType))
             {
-                InteractionPrompt.Instance?.Hide();
-            }
-            else
-            {
-                InteractionPrompt.Instance?.Show($"Hands full (holding {_playerInv.HeldItem}).");
+                DialogueManager.Instance.ShowDialogue($"Picked up {displayName}!");
+                _justPickedUp = true;
+
+                CancelInvoke(nameof(ClearDialogue));
+                Invoke(nameof(ClearDialogue), 1.5f);
             }
         }
+    }
+
+    private void ClearDialogue()
+    {
+        DialogueManager.Instance.ClearDialogue();
     }
 }

@@ -14,7 +14,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Sprite cerealSprite;
     [SerializeField] private Sprite milkSprite;
     [SerializeField] private Sprite waterSprite;
-    [SerializeField] private Sprite chickenSprite;
+    [SerializeField] private Sprite chipsSprite;
 
     private void Awake() => Instance = this;
 
@@ -50,16 +50,16 @@ public class InventoryUI : MonoBehaviour
                 heldItemIcon.sprite = appleSprite;
                 break;
             case ItemType.Milk:
-                heldItemIcon.sprite = breadSprite;
+                heldItemIcon.sprite = milkSprite;
                 break;
             case ItemType.Chips:
-                heldItemIcon.sprite = cerealSprite;
+                heldItemIcon.sprite = chipsSprite;
                 break;
             case ItemType.Water:
                 heldItemIcon.sprite = waterSprite;
                 break;
-            case ItemType.Chicken:
-                heldItemIcon.sprite = chickenSprite;
+            case ItemType.Bread:
+                heldItemIcon.sprite = breadSprite;
                 break;
             default:
                 heldItemIcon.sprite = null;
