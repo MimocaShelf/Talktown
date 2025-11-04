@@ -2360,7 +2360,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   displayName: Apple
-  itemName: Apple
 --- !u!54 &4098396992793798296
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2383,7 +2382,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
