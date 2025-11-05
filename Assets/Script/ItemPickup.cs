@@ -41,6 +41,18 @@ public class ItemPickup : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        _playerInRange = true;
+        _playerInv = other.GetComponent<PlayerInventory>();
+
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsShowing())
+            return;
+
+        DialogueManager.Instance.ShowDialogue($"Press E to pick up {displayName}");
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
@@ -81,7 +93,7 @@ public class ItemPickup : MonoBehaviour
                 _justPickedUp = true;
 
                 CancelInvoke(nameof(ClearDialogue));
-                Invoke(nameof(ClearDialogue), 1.5f);
+                //Invoke(nameof(ClearDialogue), 1.5f);
             }
         }
     }

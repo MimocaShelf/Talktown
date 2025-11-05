@@ -397,9 +397,9 @@ MonoBehaviour:
   sentenceResponses:
   - sentence: My friend has been coughing lately
     response: "Oh\u2026 does it sound wet or is it a dry cough?"
-  - sentence: "It\u2019s a dry-cough that feels itchy in-the throat"
-    response: That sounds uncomfortable. Have they been drinking enough water?
-  - sentence: Not really, she has to speak-a-lot for work
+  - sentence: "It\u2019s a dry-cough that's itchy in-the throat"
+    response: Have they been drinking enough water?
+  - sentence: Not-really, she has-to speak-a-lot for work
     response: "I\u2019d suggest a soothing dry cough syrup to calm the throat."
   - sentence: In my case, my eyes feel dry
     response: 'Do they hurt or just feel uncomfortable?
@@ -411,9 +411,9 @@ MonoBehaviour:
     response: You should try the eye drops.
   - sentence: Also, my knees feel stiff this morning
     response: Has this stiffness been happening often?
-  - sentence: Yes, I was sitting at my desk for hours
-    response: That can tighten the muscles. Any redness or dry skin in that area?
-  - sentence: It does feel a bit dry and tight
+  - sentence: Yes, I was sitting at-my desk for hours
+    response: Any redness or dry skin in that area?
+  - sentence: It does feel a-bit dry and tight
     response: Lack of bloodflow would do that. Massage it with Johnsons Lotion.
   npcName: Pharmacist
 --- !u!1001 &36646924
@@ -5481,8 +5481,8 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.2, y: 2.27, z: 1.59}
-  m_Center: {x: 0, y: 0.32, z: 0.9}
+  m_Size: {x: 2.5, y: 2.51, z: 2.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &438043580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5777,6 +5777,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ab772192ed1049543bbd98e6bb600a9a, type: 2}
+    - target: {fileID: 805255432582031851, guid: 39af6f1e99f66754dbfcde753539df1b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6235000539097917739, guid: 39af6f1e99f66754dbfcde753539df1b, type: 3}
       propertyPath: m_Name
       value: ShopKeeper
@@ -12233,7 +12237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.826
+      value: 3.195
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12241,7 +12245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.955
+      value: -6.938
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18332,8 +18336,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.058000002, y: 0.66400003}
   m_AnchorMax: {x: 0.92070836, y: 0.76844436}
-  m_AnchoredPosition: {x: 6.314972, y: 209.66281}
-  m_SizeDelta: {x: 1756.8298, y: 105.24533}
+  m_AnchoredPosition: {x: -14.394897, y: 209.66281}
+  m_SizeDelta: {x: 1564.5898, y: 105.24533}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1379588486
 MonoBehaviour:
@@ -22450,7 +22454,7 @@ MonoBehaviour:
   chipsSprite: {fileID: 21300000, guid: da9862189b9cb1f4b925330f5ae41396, type: 3}
   syrupSprite: {fileID: 21300000, guid: 602e596ec3f9660429aa8852544f2b2e, type: 3}
   eyeDropsSprite: {fileID: 21300000, guid: 0c9380e728a720a46b4d82df6c2bc16f, type: 3}
-  lotionSprite: {fileID: 21300000, guid: 38bb5ca7db6f8a04ab71a1bd3ecc8a1a, type: 3}
+  lotionSprite: {fileID: 21300000, guid: 88a5bd8faeeb91f4582b5812e97b9e3c, type: 3}
 --- !u!4 &1651283644 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6869509682599518891, guid: 96a36c75796af0647a8f471dc883fa2a, type: 3}
@@ -28979,9 +28983,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1379588485}
     m_Modifications:
+    - target: {fileID: 1376128230052527022, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.9706631
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376128230052527022, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376128230052527022, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -788.9001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376128230052527022, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376128230052527022, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -55.549942
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376128230052527022, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2179415287887247690, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
       propertyPath: m_fontSize
       value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179415287887247690, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
+      propertyPath: m_margin.w
+      value: 43.686676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179415287887247690, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
+      propertyPath: m_margin.x
+      value: -661.29535
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179415287887247690, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
+      propertyPath: m_margin.y
+      value: 74.608116
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179415287887247690, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
+      propertyPath: m_margin.z
+      value: -275.1254
       objectReference: {fileID: 0}
     - target: {fileID: 2179415287887247690, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
       propertyPath: m_fontSizeBase

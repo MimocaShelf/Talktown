@@ -20,4 +20,10 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueText.text = "";
     }
+    public bool IsShowing()
+    {
+        return dialogueText != null
+               && !string.IsNullOrEmpty(dialogueText.text)
+               && dialogueText.gameObject.activeSelf;
+    }
 }

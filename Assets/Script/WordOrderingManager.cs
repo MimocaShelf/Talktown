@@ -115,7 +115,7 @@ public class WordOrderingManager : MonoBehaviour
     private IEnumerator ShowFeedback(TextMeshProUGUI feedbackText)
     {
         feedbackText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.2f);
         feedbackText.gameObject.SetActive(false);
     }
 

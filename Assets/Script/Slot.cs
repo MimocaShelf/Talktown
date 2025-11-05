@@ -41,7 +41,6 @@ public class Slot : MonoBehaviour, IDropHandler
                 if (wordImage != null) wordImage.color = Color.blue;
                 if (background != null) background.color = Color.blue;
 
-                Debug.Log($"[SLOT] {gameObject.name} now contains word: {slotText.text}");
             }
         }
     }

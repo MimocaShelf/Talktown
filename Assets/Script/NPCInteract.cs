@@ -21,6 +21,7 @@ public class SentenceResponse
     [Header("Sentence/Response Mapping")]
     public List<SentenceResponse> sentenceResponses;  
     private int currentSentenceIndex = 0;
+    private const int MaxSentences = 5;
     public string npcName = "NPC";
     [TextArea] public string dialogueLine = "Hello, welcome to Talktown!";
     private bool playerInRange = false;
@@ -58,6 +59,11 @@ public class SentenceResponse
             if (waitingForItem)
             {
                 TryResolveItemTurnIn();
+                return;
+            }
+            if (questStage >= MaxSentences)
+            {
+                DialogueManager.Instance.ShowDialogue($"{npcName}: Thank you, come again!");
                 return;
             }
 
@@ -158,6 +164,12 @@ public class SentenceResponse
 
     public void OnSentenceComplete(string playerSentence)
     {
+        if (questStage >= MaxSentences)
+        {
+            DialogueManager.Instance.ShowDialogue($"{npcName}: Thank you, come again!");
+            CloseSentenceGame();
+            return;
+        }
 
         switch (questStage)
         {
@@ -218,6 +230,7 @@ public class SentenceResponse
             waitingForItem = false;         
             requestedItem = ItemType.None;
             questStage++;
+            currentSentenceIndex = questStage;
 
             Invoke(nameof(UnlockNextSentenceChallenge), 3f);
         }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
@@ -18,7 +18,7 @@ public class DraggableWord : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentAfterDrag = transform.parent;
-        transform.SetParent(canvas.transform); // bring to top
+        transform.SetParent(canvas.transform); //bring to top
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 

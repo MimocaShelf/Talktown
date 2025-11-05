@@ -190,7 +190,7 @@ public class PharmacyNPCInteract : MonoBehaviour
             CloseSentenceGame();
             return;
         }
-        Invoke(nameof(AdvanceAfterDelay), 3.0f);
+        Invoke(nameof(AdvanceAfterDelay), 2.2f);
     }
 
     private void AdvanceAfterDelay()
@@ -223,7 +223,7 @@ public class PharmacyNPCInteract : MonoBehaviour
             requestedItem = ItemType.None;
             currentSentenceIndex++;
 
-            Invoke(nameof(UnlockNextSentenceChallenge), 3.0f);
+            Invoke(nameof(UnlockNextSentenceChallenge), 2.2f);
         }
         else
         {
