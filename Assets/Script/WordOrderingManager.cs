@@ -132,7 +132,6 @@ public class WordOrderingManager : MonoBehaviour
 
     public void HandleCorrectSentence(string playerSentence)
     {
-        Debug.Log($"Correct sentence completed: {playerSentence}");
 
         // Example matching logic:
         if (playerSentence.Contains("apple"))

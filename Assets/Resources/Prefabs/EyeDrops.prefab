@@ -557,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7f9d2b0a61b6d4ab230b577295b452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 6
+  itemType: 7
   displayName: Eye Drops
 --- !u!65 &-2915400195179812055
 BoxCollider:

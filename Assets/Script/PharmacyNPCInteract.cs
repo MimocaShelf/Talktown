@@ -80,7 +80,7 @@ public class PharmacyNPCInteract : MonoBehaviour
         {
             OpenSentenceGame();
             wordManager.SetActivePharmacy(this);
-            DialogueManager.Instance.ShowDialogue($"{npcName}: How are your eyes feeling today?");
+            DialogueManager.Instance.ShowDialogue($"{npcName}:How can I be of help?");
 
             string answer = sentenceResponses[currentSentenceIndex].sentence;
             wordManager.GenerateChallenge(new List<string>(answer.Split(' ')));
@@ -171,10 +171,18 @@ public class PharmacyNPCInteract : MonoBehaviour
         {
             switch ((currentSentenceIndex + 1) / 3 - 1)   
             {
-                case 0: requestedItem = ItemType.EyeDrops; break;
-                case 1: requestedItem = ItemType.AntiInflammatory; break;
-                case 2: requestedItem = ItemType.Water; break;
-                default: requestedItem = ItemType.None; break;
+                case 0: 
+                    requestedItem = ItemType.Syrup; 
+                    break;
+                case 1: 
+                    requestedItem = ItemType.EyeDrops;
+                    break;
+                case 2: 
+                    requestedItem =  ItemType.Lotion; 
+                    break;
+                default: 
+                    requestedItem = ItemType.None; 
+                    break;
             }
 
             waitingForItem = true;
@@ -182,7 +190,7 @@ public class PharmacyNPCInteract : MonoBehaviour
             CloseSentenceGame();
             return;
         }
-        Invoke(nameof(AdvanceAfterDelay), 1.5f);
+        Invoke(nameof(AdvanceAfterDelay), 3.0f);
     }
 
     private void AdvanceAfterDelay()
@@ -213,9 +221,9 @@ public class PharmacyNPCInteract : MonoBehaviour
 
             waitingForItem = false;
             requestedItem = ItemType.None;
-            questStage++;
+            currentSentenceIndex++;
 
-            Invoke(nameof(UnlockNextSentenceChallenge), 1.5f);
+            Invoke(nameof(UnlockNextSentenceChallenge), 3.0f);
         }
         else
         {
@@ -228,7 +236,7 @@ public class PharmacyNPCInteract : MonoBehaviour
     {
         if (questStage < sentenceResponses.Count)
         {
-            currentSentenceIndex = questStage;
+            //currentSentenceIndex = questStage;
             string nextSentence = sentenceResponses[currentSentenceIndex].sentence;
             DialogueManager.Instance.ShowDialogue($"{npcName}: Let’s move to the next one!");
             wordManager.GenerateChallenge(new List<string>(nextSentence.Split(' ')));

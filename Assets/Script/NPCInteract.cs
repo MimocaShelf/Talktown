@@ -219,7 +219,7 @@ public class SentenceResponse
             requestedItem = ItemType.None;
             questStage++;
 
-            Invoke(nameof(UnlockNextSentenceChallenge), 1.5f);
+            Invoke(nameof(UnlockNextSentenceChallenge), 3f);
         }
         else
         {

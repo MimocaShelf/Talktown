@@ -10,8 +10,9 @@ public enum ItemType
     Water,
     Bread,
     // pharmacy
+    Syrup,
     EyeDrops,
-    AntiInflammatory
+    Lotion
 }
 
 public class ItemPickup : MonoBehaviour
