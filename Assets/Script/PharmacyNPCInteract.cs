@@ -222,6 +222,9 @@ public class PharmacyNPCInteract : MonoBehaviour
             waitingForItem = false;
             requestedItem = ItemType.None;
             currentSentenceIndex++;
+            ScoreManager.Instance?.AddPoints(10);
+            if (ScoreManager.Instance != null)
+                ScoreManager.Instance.AddPoints(10);
 
             Invoke(nameof(UnlockNextSentenceChallenge), 2.2f);
         }

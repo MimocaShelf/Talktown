@@ -10,6 +10,7 @@ public class SentenceResponseFriend
 
 public class Friend : MonoBehaviour
 {
+    private long[] friendPoints = new long[] { 100, 1000, 10000, 1000000, 999999999999999999L };
 
     [Header("UI + Game References")]
     public GameObject sentenceUI;                 // The UI panel parent
@@ -148,6 +149,20 @@ public class Friend : MonoBehaviour
 
         string npcResponse = sentenceResponses[currentSentenceIndex].response;
         DialogueManager.Instance.ShowDialogue($"{npcName}: {npcResponse}");
+
+        long pointsToGive = 0;
+        if (currentSentenceIndex < friendPoints.Length)
+        {
+            pointsToGive = friendPoints[currentSentenceIndex];
+        }
+        else
+        {
+            pointsToGive = friendPoints[friendPoints.Length - 1];
+        }
+        ScoreManager.Instance?.AddPoints((int)pointsToGive);
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.AddPoints(pointsToGive);
+
 
         Invoke(nameof(AdvanceAfterDelay), 2.2f);
     }

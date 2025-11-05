@@ -95,6 +95,8 @@ public class WordOrderingManager : MonoBehaviour
             activeGroceryNPC.OnSentenceComplete(playerSentence);
             activeGroceryNPC.CloseSentenceGame();
             handled = true;
+            if (ScoreManager.Instance != null)
+                ScoreManager.Instance.AddPoints(10);
         }
         else if (activePharmacyNPC != null)
         {
@@ -103,6 +105,8 @@ public class WordOrderingManager : MonoBehaviour
             activePharmacyNPC.OnSentenceComplete(playerSentence);
             activePharmacyNPC.CloseSentenceGame();
             handled = true;
+            if (ScoreManager.Instance != null)
+                ScoreManager.Instance.AddPoints(10);
         }
         else if (activeFriend != null)
         {

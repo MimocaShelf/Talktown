@@ -1,7 +1,26 @@
 using UnityEngine;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager Instance;
+
+    [SerializeField] private TextMeshProUGUI scoreText;
+    private long totalScore = 0;
+
+    private void Awake()
+    {
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
+        UpdateUI();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,5 +31,15 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         
+    }
+    private void UpdateUI()
+    {
+        if (scoreText != null)
+            scoreText.text = "Total Score: " + totalScore;
+    }
+    public void AddPoints(long amount)
+    {
+        totalScore += amount;
+        UpdateUI();
     }
 }

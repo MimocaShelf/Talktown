@@ -136,11 +136,6 @@ public class SentenceResponse
     public void NextSentence()
     {
         currentSentenceIndex++;
-
-        if (currentSentenceIndex >= sentenceResponses.Count)
-        {
-            Debug.Log("No more sentences available for this NPC.");
-        }
     }
     private void UnlockMouse()
         {
@@ -231,6 +226,9 @@ public class SentenceResponse
             requestedItem = ItemType.None;
             questStage++;
             currentSentenceIndex = questStage;
+            ScoreManager.Instance?.AddPoints(10);
+            if (ScoreManager.Instance != null)
+                ScoreManager.Instance.AddPoints(10);
 
             Invoke(nameof(UnlockNextSentenceChallenge), 3f);
         }
