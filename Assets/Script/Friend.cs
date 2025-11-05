@@ -142,9 +142,9 @@ public class Friend : MonoBehaviour
 
         if (currentSentenceIndex >= sentenceResponses.Count)
         {
-            DialogueManager.Instance.ShowDialogue($"{npcName}: I appreciate all that you do.");
+            DialogueManager.Instance.ShowDialogue($"{npcName}: And I love you too, my friend.");
             CloseSentenceGame();
-            if (Progress.Instance != null) Progress.Instance.SetGroceryDone();
+            if (Progress.Instance != null) Progress.Instance.SetFriendDone();
             return;
         }
 
