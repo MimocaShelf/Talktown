@@ -3,16 +3,15 @@
 public enum ItemType
 {
     None,
+    // grocery
     Apples,
     Milk,
     Chips,
     Water,
     Bread,
+    // pharmacy
     EyeDrops,
-    Lotion,
-    Toothpaste,
-    CoughSyrup,
-    Bandaids
+    AntiInflammatory
 }
 
 public class ItemPickup : MonoBehaviour
