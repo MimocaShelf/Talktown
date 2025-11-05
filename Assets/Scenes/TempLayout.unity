@@ -4235,6 +4235,7 @@ MonoBehaviour:
   correctText: {fileID: 2133191317}
   groceryNPC: {fileID: 438043580}
   pharmacyNPC: {fileID: 21019040}
+  friend: {fileID: 0}
 --- !u!4 &306504429
 Transform:
   m_ObjectHideFlags: 0
@@ -7365,6 +7366,7 @@ MonoBehaviour:
   correctText: {fileID: 2133191317}
   groceryNPC: {fileID: 0}
   pharmacyNPC: {fileID: 0}
+  friend: {fileID: 0}
 --- !u!4 &540244375
 Transform:
   m_ObjectHideFlags: 0
@@ -11800,6 +11802,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b821a10caec0af44b9a32ff20f28318b, type: 3}
   m_PrefabInstance: {fileID: 403886097}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &813890135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 97229e82747352a43b48688ec573f8e4, type: 3}
+  m_PrefabInstance: {fileID: 1570512687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &813890138
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813890135}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &813890139
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813890135}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 23816e0039304184c9d9f74b067ca30e, type: 3}
 --- !u!4 &827360747 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6458a4c9f91f22741a5064b5b7cfd892, type: 3}
@@ -12237,7 +12293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.065
+      value: -7.98
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12245,7 +12301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.139
+      value: -5.22
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19381,6 +19437,7 @@ MonoBehaviour:
   correctText: {fileID: 1856883390}
   groceryNPC: {fileID: 537026652}
   pharmacyNPC: {fileID: 0}
+  friend: {fileID: 0}
 --- !u!4 &1443277116
 Transform:
   m_ObjectHideFlags: 0
@@ -21168,6 +21225,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Friend
       objectReference: {fileID: 0}
+    - target: {fileID: 845705823087334322, guid: b51c82d5285593847b6c5ce2240dc08b, type: 3}
+      propertyPath: m_TagString
+      value: Friend
+      objectReference: {fileID: 0}
     - target: {fileID: 6203550772254479218, guid: b51c82d5285593847b6c5ce2240dc08b, type: 3}
       propertyPath: m_Controller
       value: 
@@ -21175,7 +21236,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 845705823087334322, guid: b51c82d5285593847b6c5ce2240dc08b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1984748459}
+    - targetCorrespondingSourceObject: {fileID: 845705823087334322, guid: b51c82d5285593847b6c5ce2240dc08b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1984748460}
   m_SourcePrefab: {fileID: 100100000, guid: b51c82d5285593847b6c5ce2240dc08b, type: 3}
 --- !u!1001 &1570512687
 PrefabInstance:
@@ -21247,7 +21314,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 400000, guid: 97229e82747352a43b48688ec573f8e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1826714647}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 97229e82747352a43b48688ec573f8e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 813890138}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 97229e82747352a43b48688ec573f8e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 813890139}
   m_SourcePrefab: {fileID: 100100000, guid: 97229e82747352a43b48688ec573f8e4, type: 3}
 --- !u!1 &1570640282
 GameObject:
@@ -26185,6 +26258,60 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.6, y: 21.88028, z: 16.8}
   m_Center: {x: 3.440021, y: 11.068998, z: -43.938198}
+--- !u!1 &1984748457 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 845705823087334322, guid: b51c82d5285593847b6c5ce2240dc08b, type: 3}
+  m_PrefabInstance: {fileID: 1564757521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1984748459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984748457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05d80ab9191b82b468af66295da61b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sentenceUI: {fileID: 1829330834}
+  wordManager: {fileID: 306504428}
+  playerInventory: {fileID: 1961269737}
+  sentenceResponses:
+  - sentence: Hello, how are you feeling today?
+    response: "My throat still feels dry. I think it\u2019s from the cold air at
+      night"
+  - sentence: I have exactly what you need
+    response: Really? What could it be?
+  - sentence: The pharmacist found the perfect syrup for you
+    response: Oh.. Bless you and the pharmacist!
+  - sentence: Here is healthy groceries to-help you recover
+    response: I feel so much better already!
+  - sentence: I love you dearly, my friend.
+    response: And I love you too, my friend.
+  npcName: Friend
+--- !u!65 &1984748460
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984748457}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9, y: 1.7, z: 2.86}
+  m_Center: {x: 0, y: 0.24, z: 0}
 --- !u!1001 &1986088744
 PrefabInstance:
   m_ObjectHideFlags: 0

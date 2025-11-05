@@ -14,9 +14,11 @@ public class WordOrderingManager : MonoBehaviour
     public TextMeshProUGUI correctText;
     public NPCInteract groceryNPC;   // reference to the NPC
     public PharmacyNPCInteract pharmacyNPC;
+    public Friend friend;
 
     private NPCInteract activeGroceryNPC;
     private PharmacyNPCInteract activePharmacyNPC;
+    private Friend activeFriend;
 
     private List<string> activeSentence;  // holds the current correct sentence
 
@@ -102,6 +104,12 @@ public class WordOrderingManager : MonoBehaviour
             activePharmacyNPC.CloseSentenceGame();
             handled = true;
         }
+        else if (activeFriend != null)
+        {
+            string resp = activeFriend.GetResponseForSentence(playerSentence);
+            activeFriend.OnSentenceComplete(playerSentence);
+
+        }
         else
         {
             DialogueManager.Instance.ShowDialogue("You're doing well.");
@@ -147,13 +155,22 @@ public class WordOrderingManager : MonoBehaviour
     public void SetActiveGrocery(NPCInteract npc)
     {
         activeGroceryNPC = npc;
-        activePharmacyNPC = null; // make sure only one is active
+        activePharmacyNPC = null; //make sure only one is active
+        activeFriend = null;
     }
 
     public void SetActivePharmacy(PharmacyNPCInteract npc)
     {
-        activePharmacyNPC = npc;
+        activePharmacyNPC = npc;    
         activeGroceryNPC = null;
+        activeFriend = null;
+    }
+
+    public void SetActiveFriend(Friend friend)
+    {
+        activePharmacyNPC = null;
+        activeGroceryNPC = null;
+        activeFriend = friend;
     }
 
 }
