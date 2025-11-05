@@ -179,11 +179,11 @@ public class WordOrderingManager : MonoBehaviour
         activeFriend = null;
     }
 
-    public void SetActiveFriend(Friend friend)
+    public void SetActiveFriend(Friend npc)
     {
         activePharmacyNPC = null;
         activeGroceryNPC = null;
-        activeFriend = friend;
+        activeFriend = npc;
     }
 
 }

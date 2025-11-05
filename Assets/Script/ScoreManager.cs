@@ -1,15 +1,19 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
 
     [SerializeField] private TextMeshProUGUI scoreText;
+    public TextMeshProUGUI bonusText;
     [SerializeField] private TextMeshProUGUI pointsPopupText;
 
     private long totalScore = 0;
     public long lastAddedPoints = 0;
+
+    private Coroutine hideRoutine;
 
     private void Awake()
     {

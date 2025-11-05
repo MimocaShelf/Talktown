@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 [System.Serializable]
 public class SentenceResponsePharmacy
@@ -223,6 +224,7 @@ public class PharmacyNPCInteract : MonoBehaviour
             requestedItem = ItemType.None;
             currentSentenceIndex++;
             ScoreManager.Instance?.AddPoints(10);
+            StartCoroutine(HideBonusSoon());
 
 
             Invoke(nameof(UnlockNextSentenceChallenge), 2.2f);
@@ -232,11 +234,17 @@ public class PharmacyNPCInteract : MonoBehaviour
             DialogueManager.Instance.ShowDialogue($"{npcName}: That is not what you wanted. You asked for {requestedItem}.");
         }
     }
+    private IEnumerator HideBonusSoon()
+    {
+        yield return new WaitForSeconds(1.5f);
+        if (ScoreManager.Instance && ScoreManager.Instance.bonusText)
+            ScoreManager.Instance.bonusText.gameObject.SetActive(false);
+    }
 
 
     private void UnlockNextSentenceChallenge()
     {
-        if (questStage < sentenceResponses.Count)
+        if (currentSentenceIndex < sentenceResponses.Count)
         {
             //currentSentenceIndex = questStage;
             string nextSentence = sentenceResponses[currentSentenceIndex].sentence;

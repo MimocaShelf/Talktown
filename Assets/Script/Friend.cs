@@ -77,7 +77,8 @@ public class Friend : MonoBehaviour
         }
         else
         {
-            DialogueManager.Instance.ShowDialogue(npcName + ": I apreciate all that you do!");
+            DialogueManager.Instance.ShowDialogue(npcName + ": And I love you too, my friend.");
+            if (Progress.Instance != null) Progress.Instance.SetFriendDone();
         }
 
     }
