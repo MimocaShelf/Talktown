@@ -15,6 +15,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Sprite milkSprite;
     [SerializeField] private Sprite waterSprite;
     [SerializeField] private Sprite chipsSprite;
+    [SerializeField] private Sprite bandaidSprite;
 
     private void Awake() => Instance = this;
 
@@ -60,6 +61,9 @@ public class InventoryUI : MonoBehaviour
                 break;
             case ItemType.Bread:
                 heldItemIcon.sprite = breadSprite;
+                break;
+            case ItemType.Bandaids:
+                heldItemIcon.sprite = bandaidSprite;
                 break;
             default:
                 heldItemIcon.sprite = null;

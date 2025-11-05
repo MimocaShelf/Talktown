@@ -7,7 +7,12 @@ public enum ItemType
     Milk,
     Chips,
     Water,
-    Bread
+    Bread,
+    EyeDrops,
+    Lotion,
+    Toothpaste,
+    CoughSyrup,
+    Bandaids
 }
 
 public class ItemPickup : MonoBehaviour
