@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 
 [System.Serializable]
-public class SentenceResponse
+public class SentenceResponsePharmacy
 {
     [TextArea] public string sentence;
     [TextArea] public string response;
 }
 
-    public class NPCInteract : MonoBehaviour
-{ 
-
+public class PharmacyNPCInteract : MonoBehaviour
+{
     [Header("Item Request")]
     public ItemType requestedItem = ItemType.None;
+
+    public List<ItemType> itemsEveryThird = new List<ItemType>();
+
     [Header("UI + Game References")]
     public GameObject sentenceUI;                 // The UI panel parent
     public WordOrderingManager wordManager;
     public PlayerInventory playerInventory;
 
     [Header("Sentence/Response Mapping")]
-    public List<SentenceResponse> sentenceResponses;  
+    public List<SentenceResponse> sentenceResponses;
+
     private int currentSentenceIndex = 0;
-    public string npcName = "NPC";
-    [TextArea] public string dialogueLine = "Hello, welcome to Talktown!";
+    public string npcName = "Pharmacist";
     private bool playerInRange = false;
+    private bool autoOpenNext = false;
 
     private int questStage = 0;
     private bool waitingForItem = false;
@@ -52,6 +55,12 @@ public class SentenceResponse
     void Update()
     {
         if (!playerInRange) return;
+        if (playerInRange && !waitingForItem && autoOpenNext)
+        {
+            autoOpenNext = false; 
+            OpenNextSentenceUI();
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -60,35 +69,28 @@ public class SentenceResponse
                 TryResolveItemTurnIn();
                 return;
             }
-
-            if (CompareTag("GroceryNPC"))
-            {
-                OpenSentenceGame();
-                wordManager.SetActiveGrocery(this);
-                DialogueManager.Instance.ShowDialogue($"{npcName}: Yes! How can I help?");
-
-                if (wordManager != null && sentenceResponses.Count > 0)
-                {
-                    string sentence = sentenceResponses[currentSentenceIndex].sentence;
-                    wordManager.GenerateChallenge(new List<string>(sentence.Split(' ')));
-                }
-            }
-            else
-            {
-                DialogueManager.Instance.ShowDialogue(npcName + ": Welcome to Talktown!");
-
-                DialogueChoiceManager.Instance.ShowChoices(
-                    "Ask about the town", () => DialogueManager.Instance.ShowDialogue("This town is full of life!"),
-                    "Ask about groceries", () => DialogueManager.Instance.ShowDialogue("There is a grocery store behind me. Check it out!"),
-                    "Ask about food", () => DialogueManager.Instance.ShowDialogue("Try the local café!"),
-                    "Say goodbye", () => DialogueManager.Instance.ShowDialogue("Goodbye! Come back anytime.")
-                );
-            }
+            OpenNextSentenceUI();
+            
         }
     }
 
+    private void OpenNextSentenceUI()
+    {
+        if (currentSentenceIndex < sentenceResponses.Count)
+        {
+            OpenSentenceGame();
+            wordManager.SetActivePharmacy(this);
+            DialogueManager.Instance.ShowDialogue($"{npcName}:How can I be of help?");
 
-
+            string answer = sentenceResponses[currentSentenceIndex].sentence;
+            wordManager.GenerateChallenge(new List<string>(answer.Split(' ')));
+        }
+        else
+        {
+            DialogueManager.Instance.ShowDialogue($"{npcName}: That’s all for today. Take care!");
+        }
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -129,24 +131,19 @@ public class SentenceResponse
 
     public void NextSentence()
     {
-        currentSentenceIndex++;
-
-        if (currentSentenceIndex >= sentenceResponses.Count)
-        {
-            Debug.Log("No more sentences available for this NPC.");
-        }
+        currentSentenceIndex = Mathf.Min(currentSentenceIndex + 1, sentenceResponses.Count);
     }
     private void UnlockMouse()
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
-        private void LockMouse()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+    private void LockMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
 
     //public void SetRequestedItem(ItemType type)
@@ -159,40 +156,47 @@ public class SentenceResponse
     public void OnSentenceComplete(string playerSentence)
     {
 
-        switch (questStage)
+        if (currentSentenceIndex >= sentenceResponses.Count)
         {
-            case 0:
-                requestedItem = ItemType.Apples;
-                break;
-
-            case 1:
-                requestedItem = ItemType.Milk;
-                break;
-
-            case 2:
-                requestedItem = ItemType.Chips;
-                break;
-
-            case 3:
-                requestedItem = ItemType.Water;
-                break;
-            
-            case 4:
-                requestedItem = ItemType.Bread;
-                break;
-
-
-            default:
-                DialogueManager.Instance.ShowDialogue($"{npcName}: You're doing well!");
-                return;
+            DialogueManager.Instance.ShowDialogue($"{npcName}: Thanks, that was helpful.");
+            CloseSentenceGame();
+            return;
         }
 
-        if (questStage < sentenceResponses.Count)
+        string npcResponse = sentenceResponses[currentSentenceIndex].response;
+        DialogueManager.Instance.ShowDialogue($"{npcName}: {npcResponse}");
+
+        bool isEveryThird = ((currentSentenceIndex + 1) % 3 == 0);
+        if (isEveryThird)
         {
-            string npcResponse = sentenceResponses[questStage].response;
-            DialogueManager.Instance.ShowDialogue($"{npcName}: {npcResponse}");
+            switch ((currentSentenceIndex + 1) / 3 - 1)   
+            {
+                case 0: 
+                    requestedItem = ItemType.Syrup; 
+                    break;
+                case 1: 
+                    requestedItem = ItemType.EyeDrops;
+                    break;
+                case 2: 
+                    requestedItem =  ItemType.Lotion; 
+                    break;
+                default: 
+                    requestedItem = ItemType.None; 
+                    break;
+            }
+
+            waitingForItem = true;
+            //DialogueManager.Instance.ShowDialogue($"{npcName}: Can you bring me some {requestedItem}?");
+            CloseSentenceGame();
+            return;
         }
-        waitingForItem = true;
+        Invoke(nameof(AdvanceAfterDelay), 3.0f);
+    }
+
+    private void AdvanceAfterDelay()
+    {
+        currentSentenceIndex++;
+        autoOpenNext = true;  
         CloseSentenceGame();
     }
 
@@ -215,11 +219,11 @@ public class SentenceResponse
             DialogueManager.Instance.ShowDialogue($"{npcName}: Perfect! That’s the {requestedItem}!");
             playerInventory.TryConsume(requestedItem);
 
-            waitingForItem = false;         
+            waitingForItem = false;
             requestedItem = ItemType.None;
-            questStage++;
+            currentSentenceIndex++;
 
-            Invoke(nameof(UnlockNextSentenceChallenge), 3f);
+            Invoke(nameof(UnlockNextSentenceChallenge), 3.0f);
         }
         else
         {
@@ -232,7 +236,7 @@ public class SentenceResponse
     {
         if (questStage < sentenceResponses.Count)
         {
-            currentSentenceIndex = questStage;
+            //currentSentenceIndex = questStage;
             string nextSentence = sentenceResponses[currentSentenceIndex].sentence;
             DialogueManager.Instance.ShowDialogue($"{npcName}: Let’s move to the next one!");
             wordManager.GenerateChallenge(new List<string>(nextSentence.Split(' ')));
@@ -243,8 +247,4 @@ public class SentenceResponse
             DialogueManager.Instance.ShowDialogue($"{npcName}: Thank you, come again!");
         }
     }
-
 }
-
-
-

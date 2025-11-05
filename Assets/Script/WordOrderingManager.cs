@@ -13,6 +13,10 @@ public class WordOrderingManager : MonoBehaviour
     public TextMeshProUGUI wrongText;
     public TextMeshProUGUI correctText;
     public NPCInteract groceryNPC;   // reference to the NPC
+    public PharmacyNPCInteract pharmacyNPC;
+
+    private NPCInteract activeGroceryNPC;
+    private PharmacyNPCInteract activePharmacyNPC;
 
     private List<string> activeSentence;  // holds the current correct sentence
 
@@ -79,11 +83,29 @@ public class WordOrderingManager : MonoBehaviour
     {
         correctText.gameObject.SetActive(true);
 
-        string npcResponse = groceryNPC.GetResponseForSentence(playerSentence);
-        groceryNPC.CloseSentenceGame();
-        DialogueManager.Instance.ShowDialogue(groceryNPC.npcName + ": " + npcResponse);
-        groceryNPC.OnSentenceComplete(playerSentence);
-        groceryNPC.CloseSentenceGame();
+
+        bool handled = false;
+
+        if (activeGroceryNPC != null)
+        {
+            string resp = activeGroceryNPC.GetResponseForSentence(playerSentence);
+            DialogueManager.Instance.ShowDialogue(activeGroceryNPC.npcName + ": " + resp);
+            activeGroceryNPC.OnSentenceComplete(playerSentence);
+            activeGroceryNPC.CloseSentenceGame();
+            handled = true;
+        }
+        else if (activePharmacyNPC != null)
+        {
+            string resp = activePharmacyNPC.GetResponseForSentence(playerSentence);
+            DialogueManager.Instance.ShowDialogue(activePharmacyNPC.npcName + ": " + resp);
+            activePharmacyNPC.OnSentenceComplete(playerSentence);
+            activePharmacyNPC.CloseSentenceGame();
+            handled = true;
+        }
+        else
+        {
+            DialogueManager.Instance.ShowDialogue("You're doing well.");
+        }
 
         yield return new WaitForSeconds(2f);
         correctText.gameObject.SetActive(false);
@@ -110,7 +132,6 @@ public class WordOrderingManager : MonoBehaviour
 
     public void HandleCorrectSentence(string playerSentence)
     {
-        Debug.Log($"Correct sentence completed: {playerSentence}");
 
         // Example matching logic:
         if (playerSentence.Contains("apple"))
@@ -122,4 +143,17 @@ public class WordOrderingManager : MonoBehaviour
 
         groceryNPC.CloseSentenceGame();
     }
+
+    public void SetActiveGrocery(NPCInteract npc)
+    {
+        activeGroceryNPC = npc;
+        activePharmacyNPC = null; // make sure only one is active
+    }
+
+    public void SetActivePharmacy(PharmacyNPCInteract npc)
+    {
+        activePharmacyNPC = npc;
+        activeGroceryNPC = null;
+    }
+
 }

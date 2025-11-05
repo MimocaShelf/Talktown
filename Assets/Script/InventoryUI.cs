@@ -15,12 +15,9 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Sprite milkSprite;
     [SerializeField] private Sprite waterSprite;
     [SerializeField] private Sprite chipsSprite;
-    [SerializeField] private Sprite bandaidSprite;
-    [SerializeField] private Sprite eyeDropSprite;
-    [SerializeField] private Sprite coughSyrupSprite;
-    [SerializeField] private Sprite toothpasteSprite;
+    [SerializeField] private Sprite syrupSprite;
+    [SerializeField] private Sprite eyeDropsSprite;
     [SerializeField] private Sprite lotionSprite;
-
 
     private void Awake() => Instance = this;
 
@@ -54,37 +51,31 @@ public class InventoryUI : MonoBehaviour
         {
             case ItemType.Apples:
                 heldItemIcon.sprite = appleSprite;
-                break;
+                    break;
             case ItemType.Milk:
                 heldItemIcon.sprite = milkSprite;
-                break;
+                    break;
             case ItemType.Chips:
                 heldItemIcon.sprite = chipsSprite;
-                break;
+                    break;
             case ItemType.Water:
                 heldItemIcon.sprite = waterSprite;
-                break;
+                    break;
             case ItemType.Bread:
                 heldItemIcon.sprite = breadSprite;
-                break;
-            case ItemType.Bandaids:
-                heldItemIcon.sprite = bandaidSprite;
-                break;
+                    break;
+            case ItemType.Syrup:
+                heldItemIcon.sprite = syrupSprite;
+                    break;
             case ItemType.EyeDrops:
-                heldItemIcon.sprite = eyeDropSprite;
-                break;
-            case ItemType.CoughSyrup:
-                heldItemIcon.sprite = coughSyrupSprite;
-                break;
-            case ItemType.Toothpaste:
-                heldItemIcon.sprite = toothpasteSprite;
-                break;
+                heldItemIcon.sprite = eyeDropsSprite;
+                    break;
             case ItemType.Lotion:
                 heldItemIcon.sprite = lotionSprite;
-                break;
+                    break;
             default:
                 heldItemIcon.sprite = null;
-                break;
+                    break;
         }
     }
 }

@@ -6,7 +6,7 @@ TagManager:
   tags:
   - NPC
   - GroceryNPC
-  - DoctorNPC
+  - PharmacyNPC
   layers:
   - Default
   - TransparentFX
