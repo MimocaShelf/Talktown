@@ -178,7 +178,7 @@ public class PharmacyNPCInteract : MonoBehaviour
             }
 
             waitingForItem = true;
-            DialogueManager.Instance.ShowDialogue($"{npcName}: Can you bring me some {requestedItem}?");
+            //DialogueManager.Instance.ShowDialogue($"{npcName}: Can you bring me some {requestedItem}?");
             CloseSentenceGame();
             return;
         }

@@ -377,40 +377,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.71, y: 1.72, z: 1.53}
   m_Center: {x: 0.26, y: 0.67, z: 0.77}
---- !u!114 &21019038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21019033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9da5b2e5da265844eb751d0b8fd7f242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  requestedItem: 0
-  sentenceUI: {fileID: 1829330834}
-  wordManager: {fileID: 540244374}
-  playerInventory: {fileID: 1961269737}
-  sentenceResponses:
-  - sentence: My throat is sore
-    response: Sounds like you need cough medicine! The bottles are located in the
-      back shelf on the right
-  - sentence: My gums are sore when I brush my teeth
-    response: Gum sensitive toothpaste should help! They are located on the middle
-      shelf to your left
-  - sentence: My hands are really itchy
-    response: Looks like your skin is iritated. Grab the lotion on the shelf behind
-      me!
-  - sentence: My eyes are dry
-    response: Eye drops should to the trick! They are on the middle shelf to your
-      right
-  - sentence: I got cuts on my fingers
-    response: Oh, you should get some bandaids for those! They are on the upper shelf
-      just on the right!
-  npcName: Chemist
-  dialogueLine: Hello, welcome to the Pharmacy!
 --- !u!114 &21019040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,10 +391,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requestedItem: 0
   itemsEveryThird: 
-  sentenceUI: {fileID: 1272168954}
+  sentenceUI: {fileID: 1829330834}
   wordManager: {fileID: 306504428}
   playerInventory: {fileID: 1961269737}
-  sentenceResponses: []
+  sentenceResponses:
+  - sentence: My eyes feel dry.
+    response: Do they hurt or just feel uncomfortable?
+  - sentence: They feel itchy but not painful.
+    response: It sounds like eye strain.
+  - sentence: What do you suggest I get?
+    response: You should try the eye drops.
+  - sentence: My knees feel stiff this morning.
+    response: Has this stiffness been happening often?
+  - sentence: Yes, I was sitting at my desk for hours.
+    response: That can tighten the muscles. Any redness or dry skin in that area?
+  - sentence: It does feels a bit dry and tight.
+    response: Lack of bloodflow would do that. Massage it with Johnsons Lotion.
   npcName: Pharmacist
 --- !u!1001 &36646924
 PrefabInstance:
@@ -1080,80 +1058,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1730933843}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &71972148
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 898538337}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.015337
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5380011
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.743002
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_Name
-      value: Serum Bottle (6)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
---- !u!4 &71972149 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-  m_PrefabInstance: {fileID: 71972148}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &75315587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4266,7 +4170,7 @@ MonoBehaviour:
   wrongText: {fileID: 1613931363}
   correctText: {fileID: 2133191317}
   groceryNPC: {fileID: 438043580}
-  pharmacyNPC: {fileID: 0}
+  pharmacyNPC: {fileID: 21019040}
 --- !u!4 &306504429
 Transform:
   m_ObjectHideFlags: 0
@@ -6080,75 +5984,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3831531190897018805, guid: dfc1c20206003404fadfd221e2a60069, type: 3}
   m_PrefabInstance: {fileID: 1510700138}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &458106680
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 898538337}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.015337
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5380011
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.612001
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_Name
-      value: Serum Bottle
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
 --- !u!1001 &465964464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6617,80 +6452,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!1001 &494161245
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 898538337}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.015337
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5380011
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.390001
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_Name
-      value: Serum Bottle (4)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
---- !u!4 &494161246 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-  m_PrefabInstance: {fileID: 494161245}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &500828038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7480,7 +7241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &540244374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7488,7 +7249,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540244373}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ecf6f5ce24510f4f8568fa0c07cdff6, type: 3}
   m_Name: 
@@ -7499,7 +7260,7 @@ MonoBehaviour:
   scrambledPanel: {fileID: 1379588485}
   wrongText: {fileID: 1613931363}
   correctText: {fileID: 2133191317}
-  groceryNPC: {fileID: 21019038}
+  groceryNPC: {fileID: 0}
   pharmacyNPC: {fileID: 0}
 --- !u!4 &540244375
 Transform:
@@ -8404,80 +8165,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568600084}
   m_Mesh: {fileID: -4355411845722880063, guid: 0f82de616d3246140b40a7faaaaa2ee2, type: 3}
---- !u!1001 &571252215
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 898538337}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.015337
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5380011
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.004
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_Name
-      value: Serum Bottle (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
---- !u!4 &571252216 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-  m_PrefabInstance: {fileID: 571252215}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &584008447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10053,7 +9740,7 @@ Transform:
   m_GameObject: {fileID: 724332398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 18.87, z: -0.21}
+  m_LocalPosition: {x: 0, y: 17, z: -0.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12210,7 +11897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.84
+      value: -5.826
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12218,7 +11905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.308
+      value: 14.955
       objectReference: {fileID: 0}
     - target: {fileID: 4747688754161049632, guid: ade48b875de193c4586a2d60dffdde34, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12440,12 +12127,6 @@ Transform:
   - {fileID: 387908748}
   - {fileID: 1550646277}
   - {fileID: 1127381912}
-  - {fileID: 1706188586}
-  - {fileID: 571252216}
-  - {fileID: 2008741282}
-  - {fileID: 494161246}
-  - {fileID: 1652862897}
-  - {fileID: 71972149}
   - {fileID: 471686736}
   - {fileID: 1029219041}
   - {fileID: 1024611659}
@@ -15473,8 +15154,8 @@ MeshCollider:
   m_Mesh: {fileID: -2432090755550338912, guid: 96e57810742595345a47f32ae7c1b3a6, type: 3}
 --- !u!4 &1127381912 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-  m_PrefabInstance: {fileID: 458106680}
+  m_CorrespondingSourceObject: {fileID: 6647572214795031249, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+  m_PrefabInstance: {fileID: 5956148117361094303}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1129825873 stripped
 Transform:
@@ -16509,7 +16190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9144006025441052984, guid: 93587572c0ddb6e4b82b059e762dfb27, type: 3}
       propertyPath: m_Name
-      value: Doctor
+      value: Pharmacist
       objectReference: {fileID: 0}
     - target: {fileID: 9144006025441052984, guid: 93587572c0ddb6e4b82b059e762dfb27, type: 3}
       propertyPath: m_TagString
@@ -16522,9 +16203,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9144006025441052984, guid: 93587572c0ddb6e4b82b059e762dfb27, type: 3}
       insertIndex: -1
       addedObject: {fileID: 21019036}
-    - targetCorrespondingSourceObject: {fileID: 9144006025441052984, guid: 93587572c0ddb6e4b82b059e762dfb27, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 21019038}
     - targetCorrespondingSourceObject: {fileID: 9144006025441052984, guid: 93587572c0ddb6e4b82b059e762dfb27, type: 3}
       insertIndex: -1
       addedObject: {fileID: 21019037}
@@ -22183,80 +21861,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6869509682599518891, guid: 96a36c75796af0647a8f471dc883fa2a, type: 3}
   m_PrefabInstance: {fileID: 7174747887277593760}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1652862896
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 898538337}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.015337
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5380011
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.561001
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_Name
-      value: Serum Bottle (5)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
---- !u!4 &1652862897 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-  m_PrefabInstance: {fileID: 1652862896}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1673217741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22703,80 +22307,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679935708}
   m_Mesh: {fileID: -4355411845722880063, guid: 0f82de616d3246140b40a7faaaaa2ee2, type: 3}
---- !u!1001 &1706188585
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 898538337}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.015337
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5380011
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.792002
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_Name
-      value: Serum Bottle (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
---- !u!4 &1706188586 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-  m_PrefabInstance: {fileID: 1706188585}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1707097044 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4594347215931136995, guid: b3e3f0a7c8b39cc4b84e96f0777b04d2, type: 3}
@@ -26141,80 +25671,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1836709744}
   m_SourcePrefab: {fileID: 100100000, guid: ae240adda0a745942b085cf46632d088, type: 3}
---- !u!1001 &2008741281
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 898538337}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.015337
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5380011
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.193001
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-      propertyPath: m_Name
-      value: Serum Bottle (3)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
---- !u!4 &2008741282 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4f8441c375f83d34f8dc945d2518e374, type: 3}
-  m_PrefabInstance: {fileID: 2008741281}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2023354950
 GameObject:
   m_ObjectHideFlags: 0
@@ -28704,6 +28160,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cc8693c12e80074d8a6144dbee80fc4, type: 3}
+--- !u!1001 &5956148117361094303
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 898538337}
+    m_Modifications:
+    - target: {fileID: 6272171885059704939, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+      propertyPath: m_Name
+      value: Serum Bottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647572214795031249, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.015337
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647572214795031249, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5380011
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647572214795031249, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.612001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647572214795031249, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647572214795031249, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647572214795031249, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647572214795031249, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647572214795031249, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647572214795031249, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647572214795031249, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6eee3cb941533a4faa02a2093b13b29, type: 3}
 --- !u!1001 &7174747887277593760
 PrefabInstance:
   m_ObjectHideFlags: 0
