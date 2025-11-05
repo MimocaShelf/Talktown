@@ -371,12 +371,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.44, y: 1.72, z: 1.32}
-  m_Center: {x: 0, y: 0.82, z: 0}
+  m_Size: {x: 1.71, y: 1.72, z: 1.53}
+  m_Center: {x: 0.26, y: 0.67, z: 0.77}
 --- !u!114 &21019038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +411,25 @@ MonoBehaviour:
       just on the right!
   npcName: Chemist
   dialogueLine: Hello, welcome to the Pharmacy!
+--- !u!114 &21019040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21019033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a99c4dec830a249bc62cb89968d26c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requestedItem: 0
+  itemsEveryThird: 
+  sentenceUI: {fileID: 1272168954}
+  wordManager: {fileID: 306504428}
+  playerInventory: {fileID: 1961269737}
+  sentenceResponses: []
+  npcName: Pharmacist
 --- !u!1001 &36646924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4247,6 +4266,7 @@ MonoBehaviour:
   wrongText: {fileID: 1613931363}
   correctText: {fileID: 2133191317}
   groceryNPC: {fileID: 438043580}
+  pharmacyNPC: {fileID: 0}
 --- !u!4 &306504429
 Transform:
   m_ObjectHideFlags: 0
@@ -5567,8 +5587,8 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.02, y: 2.27, z: 2.13}
-  m_Center: {x: 0, y: 0.53, z: 0}
+  m_Size: {x: 2.2, y: 2.27, z: 1.59}
+  m_Center: {x: 0, y: 0.32, z: 0.9}
 --- !u!114 &438043580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7480,6 +7500,7 @@ MonoBehaviour:
   wrongText: {fileID: 1613931363}
   correctText: {fileID: 2133191317}
   groceryNPC: {fileID: 21019038}
+  pharmacyNPC: {fileID: 0}
 --- !u!4 &540244375
 Transform:
   m_ObjectHideFlags: 0
@@ -10032,7 +10053,7 @@ Transform:
   m_GameObject: {fileID: 724332398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 13.73, z: -0.21}
+  m_LocalPosition: {x: 0, y: 18.87, z: -0.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16492,7 +16513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9144006025441052984, guid: 93587572c0ddb6e4b82b059e762dfb27, type: 3}
       propertyPath: m_TagString
-      value: DoctorNPC
+      value: PharmacyNPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16507,6 +16528,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9144006025441052984, guid: 93587572c0ddb6e4b82b059e762dfb27, type: 3}
       insertIndex: -1
       addedObject: {fileID: 21019037}
+    - targetCorrespondingSourceObject: {fileID: 9144006025441052984, guid: 93587572c0ddb6e4b82b059e762dfb27, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 21019040}
   m_SourcePrefab: {fileID: 100100000, guid: 93587572c0ddb6e4b82b059e762dfb27, type: 3}
 --- !u!1 &1255528187
 GameObject:
@@ -19177,6 +19201,7 @@ MonoBehaviour:
   wrongText: {fileID: 940466168}
   correctText: {fileID: 1856883390}
   groceryNPC: {fileID: 537026652}
+  pharmacyNPC: {fileID: 0}
 --- !u!4 &1443277116
 Transform:
   m_ObjectHideFlags: 0
@@ -22152,6 +22177,7 @@ MonoBehaviour:
   milkSprite: {fileID: 21300000, guid: 2054c043097ab944780b7dc350ac2a72, type: 3}
   waterSprite: {fileID: 21300000, guid: 951087fa9cf4bdb4e87c5f3039d518ee, type: 3}
   chipsSprite: {fileID: 21300000, guid: da9862189b9cb1f4b925330f5ae41396, type: 3}
+  bandaidSprite: {fileID: 0}
 --- !u!4 &1651283644 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6869509682599518891, guid: 96a36c75796af0647a8f471dc883fa2a, type: 3}

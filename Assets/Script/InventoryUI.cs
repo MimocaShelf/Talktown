@@ -62,9 +62,9 @@ public class InventoryUI : MonoBehaviour
             case ItemType.Bread:
                 heldItemIcon.sprite = breadSprite;
                 break;
-            case ItemType.Bandaids:
-                heldItemIcon.sprite = bandaidSprite;
-                break;
+            //case ItemType.Bandaids:
+                //heldItemIcon.sprite = bandaidSprite;
+                //break;
             default:
                 heldItemIcon.sprite = null;
                 break;
