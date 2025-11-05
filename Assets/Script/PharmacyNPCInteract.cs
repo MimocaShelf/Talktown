@@ -247,6 +247,7 @@ public class PharmacyNPCInteract : MonoBehaviour
         else
         {
             DialogueManager.Instance.ShowDialogue($"{npcName}: Thank you, come again!");
+            if (Progress.Instance != null) Progress.Instance.SetGroceryDone();
         }
     }
 }

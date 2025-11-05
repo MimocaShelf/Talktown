@@ -144,6 +144,7 @@ public class Friend : MonoBehaviour
         {
             DialogueManager.Instance.ShowDialogue($"{npcName}: I appreciate all that you do.");
             CloseSentenceGame();
+            if (Progress.Instance != null) Progress.Instance.SetGroceryDone();
             return;
         }
 
