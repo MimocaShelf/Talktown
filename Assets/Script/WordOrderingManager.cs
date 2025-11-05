@@ -83,6 +83,15 @@ public class WordOrderingManager : MonoBehaviour
     // Handles correct answers
     private IEnumerator HandleCorrectAnswer(string playerSentence)
     {
+        if (ScoreManager.Instance != null && correctText != null)
+        {
+            long justAdded = ScoreManager.Instance.lastAddedPoints;
+            if (justAdded > 0)
+                correctText.text = "+" + justAdded.ToString();
+            else
+                correctText.text = "+10";
+        }
+
         correctText.gameObject.SetActive(true);
 
 

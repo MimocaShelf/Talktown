@@ -227,8 +227,7 @@ public class SentenceResponse
             questStage++;
             currentSentenceIndex = questStage;
             ScoreManager.Instance?.AddPoints(10);
-            if (ScoreManager.Instance != null)
-                ScoreManager.Instance.AddPoints(10);
+
 
             Invoke(nameof(UnlockNextSentenceChallenge), 3f);
         }

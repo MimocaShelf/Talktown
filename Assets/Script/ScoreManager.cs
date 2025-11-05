@@ -6,7 +6,10 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
 
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI pointsPopupText;
+
     private long totalScore = 0;
+    public long lastAddedPoints = 0;
 
     private void Awake()
     {
@@ -34,12 +37,20 @@ public class ScoreManager : MonoBehaviour
     }
     private void UpdateUI()
     {
-        if (scoreText != null)
-            scoreText.text = "Total Score: " + totalScore;
+        if (scoreText != null) scoreText.text = "Total Score: " + totalScore;
     }
     public void AddPoints(long amount)
     {
+        lastAddedPoints = amount;
         totalScore += amount;
+
         UpdateUI();
+
+        if (pointsPopupText != null)
+        {
+            pointsPopupText.gameObject.SetActive(true);
+            pointsPopupText.text = "+" + amount;
+        }
     }
+
 }

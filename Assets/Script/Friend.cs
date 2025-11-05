@@ -159,9 +159,7 @@ public class Friend : MonoBehaviour
         {
             pointsToGive = friendPoints[friendPoints.Length - 1];
         }
-        ScoreManager.Instance?.AddPoints((int)pointsToGive);
-        if (ScoreManager.Instance != null)
-            ScoreManager.Instance.AddPoints(pointsToGive);
+        ScoreManager.Instance?.AddPoints(pointsToGive);
 
 
         Invoke(nameof(AdvanceAfterDelay), 2.2f);
