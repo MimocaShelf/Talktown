@@ -80,7 +80,7 @@ public class PharmacyNPCInteract : MonoBehaviour
         {
             OpenSentenceGame();
             wordManager.SetActivePharmacy(this);
-            DialogueManager.Instance.ShowDialogue($"{npcName}:How can I be of help?");
+            //DialogueManager.Instance.ShowDialogue($"{npcName}:How can I be of help?");
 
             string answer = sentenceResponses[currentSentenceIndex].sentence;
             wordManager.GenerateChallenge(new List<string>(answer.Split(' ')));
